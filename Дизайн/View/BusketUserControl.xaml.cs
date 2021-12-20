@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Дизайн
+namespace Дизайн.View
 {
     /// <summary>
-    /// Логика взаимодействия для Busket.xaml
+    /// Логика взаимодействия для BusketUserControl.xaml
     /// </summary>
-    public partial class Busket : Window
+    public partial class BusketUserControl : UserControl
     {
-        public Busket()
+        public BusketUserControl()
         {
             InitializeComponent();
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

@@ -28,7 +28,7 @@ namespace DAL.Entities
 
         public int ProductCode { get; set; }
 
-        public int? Sale { get; set; }
+        public decimal? Sale { get; set; }
 
         public virtual Product Product { get; set; }
 

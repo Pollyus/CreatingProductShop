@@ -29,6 +29,7 @@ namespace BAL.Models
             CategoryId = product.CategoryId;
             //Sale = product.Sale;
             Photo = product.Photo;
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

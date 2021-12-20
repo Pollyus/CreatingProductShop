@@ -8,6 +8,7 @@ using BAL.Models;
 using BAL.Interfaces;
 using DAL.Entities;
 using DAL.Interfaces;
+using BBL.Models;
 
 namespace BAL.Servises
 {
@@ -17,6 +18,10 @@ namespace BAL.Servises
         public OrderService(IDbRepos repos)
         {
             dataBase = repos;
+        }
+        public List<CartModel> GetShoppingCart(int customerId)
+        {
+            return dataBase.Services.GetShoppingCart(customerId).Select(i => new CartModel { Amount = i.Amount, BuyerId = i.ByuerId, FullPrice = i.FullPrice, FullSale = i.FullSale, Id = i.Id, Photo = i.Photo, ProductId = i.ProductId, ProductName = i.ProductName }).ToList();
         }
 
         public bool MakeOrder(OrderModel orderModel, List<int> items)

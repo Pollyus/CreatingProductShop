@@ -20,6 +20,7 @@ namespace DAL.Repository
         private UserSaleRepositorySQL userSaleRepositorySQL;
         private ServiceRepositorySQL serviceRepositorySQL;
         private UserRepositorySQL userRepositorySQL;
+        private ShoppingCartRepositorySQL shoppingCartRepositorySQL;
         public DbReposSQL()
         {
             db = new ProductContext();
@@ -45,6 +46,15 @@ namespace DAL.Repository
             }
         }
 
+        public IRepository<ShoppingCart> ShoppingCarts
+        {
+            get
+            {
+                if (shoppingCartRepositorySQL == null)
+                    shoppingCartRepositorySQL = new ShoppingCartRepositorySQL(db);
+                return shoppingCartRepositorySQL;
+            }
+        }
         public IRepository<Category> Categories
         {
             get

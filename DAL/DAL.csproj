@@ -63,12 +63,13 @@
     <Compile Include="Entities\Pick_Point.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductContext.cs" />
+    <Compile Include="Entities\Reports.cs" />
     <Compile Include="Entities\Sale.cs" />
+    <Compile Include="Entities\ShoppingCart.cs" />
     <Compile Include="Entities\TypeOfPayment.cs" />
     <Compile Include="Entities\TypeOfUser.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\User_Sale.cs" />
-    <Compile Include="Entities\Reports.cs" />
     <Compile Include="Interfaces\ICatalogFiltersRepository.cs" />
     <Compile Include="Interfaces\IDbRepos.cs" />
     <Compile Include="Interfaces\IReportsrepository.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Repository\ReportRepositorySQL.cs" />
     <Compile Include="Repository\SaleRepositorySQL.cs" />
     <Compile Include="Repository\ServiceRepositorySQL.cs" />
+    <Compile Include="Repository\ShoppingCartRepositorySQL.cs" />
     <Compile Include="Repository\UserRepositorySQL.cs" />
     <Compile Include="Repository\UserSaleRepositorySQL.cs" />
   </ItemGroup>

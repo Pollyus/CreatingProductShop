@@ -14,6 +14,7 @@ namespace DAL.Entities
         {
             Busket = new HashSet<Busket>();
             Order = new HashSet<Order>();
+            ShoppingCart = new HashSet<ShoppingCart>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -39,5 +40,8 @@ namespace DAL.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShoppingCart> ShoppingCart { get; set; }
     }
 }

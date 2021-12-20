@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BAL.Models;
+using BBL.Models;
 
 namespace BAL.Interfaces
 {
@@ -12,5 +13,7 @@ namespace BAL.Interfaces
         //Создает или изменяет существующий заказ
       // bool MakeOrder(OrderModel orderModel);
         bool MakeOrder(OrderModel orderModel, List<int> items);
+
+        List<CartModel> GetShoppingCart(int customerId);
     }
 }

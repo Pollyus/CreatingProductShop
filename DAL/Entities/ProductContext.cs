@@ -21,8 +21,9 @@ namespace DAL.Entities
         public virtual DbSet<Pick_Point> Pick_Point { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public virtual DbSet<TypeOfPayment> TypeOfPayment { get; set; }
-        public virtual DbSet<TypeOfUser> TypeOfUser { get; set; }
+        public virtual DbSet<TypeOfUser> TypeOfUsers { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<User_Sale> User_Sales { get; set; }
         public virtual DbSet<Busket> Busket { get; set; }
@@ -142,6 +143,10 @@ namespace DAL.Entities
             modelBuilder.Entity<Sale>()
                 .Property(e => e.Background)
                 .IsFixedLength();
+
+            modelBuilder.Entity<ShoppingCart>()
+                .Property(e => e.Amount)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<TypeOfPayment>()
                 .Property(e => e.Name)

@@ -19,6 +19,7 @@ namespace DAL.Interfaces
         IRepository<User> Users { get; }
         IRepository<Sale> Sales { get; }
         IRepository<User_Sale> UserSales { get; }
+        IRepository<ShoppingCart> ShoppingCarts { get; }
         int Save();
     }
 }

@@ -15,6 +15,7 @@ using Дизайн.ViewModel;
 using View;
 using Дизайн;
 using Mustorg.ViewModel;
+using BBL.Models;
 
 namespace Дизайн.ViewModel
 {
@@ -34,6 +35,7 @@ namespace Дизайн.ViewModel
             _categoryService = categoryService;
             _catalogService = productCatalogService;
             _dialogService = dialogService;
+            _userId = userId;
 
             var tempTypes = _categoryService.GetTypeModels();
             Types = new ObservableCollection<TypeModel>();
@@ -96,6 +98,7 @@ namespace Дизайн.ViewModel
             if ((int)args != -1)
             {
                 productId = Products[(int)args].Id;
+                //batchProductId = Ba
 
                 var Product = _crud.GetAllProducts().Where(i => i.Id == productId).ToList();
                 //Article = " Артикул: " + Product[0].Article.ToString();
@@ -106,10 +109,10 @@ namespace Дизайн.ViewModel
                 Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
                 //CanAddToCart = Product[0].Availability;
 
-                //if (Product[0].Sale != null)
-                //{
-                //    Sale = $"Скидка: {Product[0].Sale:0.#} руб.";
-                //}
+                if (Product[0].Sale != null)
+                {
+                    Sale = $"Скидка: {Product[0].Sale:0.#} руб.";
+                }
 
                 //if (Product[0].Availability == true)
                 //{
@@ -123,7 +126,8 @@ namespace Дизайн.ViewModel
         }
 
 
-        private int productId;
+        private int productId; 
+        //private int batchProductId;
         public string Article
         {
             get
@@ -137,6 +141,8 @@ namespace Дизайн.ViewModel
             }
         }
         private string _Article;
+        
+
         public string Guarantee
         {
             get
@@ -228,42 +234,41 @@ namespace Дизайн.ViewModel
             }
         }
         private string _Availability;
-        //public bool CanAddToCart
-        //{
-        //    get
-        //    {
-        //        return _CanAddToCart;
-        //    }
-        //    set
-        //    {
-        //        _CanAddToCart = value;
-        //        NotifyPropertyChanged("CanAddToCart");
-        //    }
-        //}
-        //private bool _CanAddToCart;
-        //#endregion
+        public bool CanAddToCart
+        {
+            get
+            {
+                return _CanAddToCart;
+            }
+            set
+            {
+                _CanAddToCart = value;
+                NotifyPropertyChanged("CanAddToCart");
+            }
+        }
+        private bool _CanAddToCart;
 
 
-        //#region Добавить в корзину
-        //private ICommand _addToCart;
-        //public ICommand AddToCart
-        //{
-        //    get
-        //    {
-        //        if (_addToCart == null)
-        //            _addToCart = new RelayCommand(args => UpdateCart(args));
-        //        return _addToCart;
-        //    }
-        //}
 
-        //private void UpdateCart(object args)
-        //{
-        //    CartModel cart = new CartModel();
-        //    cart.ProductId = productId;
-        //    cart.CustomerId = _userId;
-        //    _crud.CreateCart(cart);
-        //    Messenger.Default.Send(new GenericMessage<CartModel>(null));
-        //}
+        private ICommand _addToCart;
+        public ICommand AddToCart
+        {
+            get
+            {
+                if (_addToCart == null)
+                    _addToCart = new RelayCommand(args => UpdateCart(args));
+                return _addToCart;
+            }
+        }
+
+        private void UpdateCart(object args)
+        {
+            CartModel cart = new CartModel();
+            cart.ProductId = productId;
+            cart.BuyerId = _userId;
+            _crud.CreateCart(cart);
+            //Messenger.Default.Send(new GenericMessage<CartModel>(null));
+        }
         #endregion
 
         public ObservableCollection<TypeModel> Types { get; set; }
@@ -282,7 +287,19 @@ namespace Дизайн.ViewModel
         }
         private ObservableCollection<ProductModel> _Products;
 
-
+        //public ObservableCollection<Batch> BatchProducts
+        //{
+        //    get
+        //    {
+        //        return _Products;
+        //    }
+        //    set
+        //    {
+        //        _Products = value;
+        //        NotifyPropertyChanged("Products");
+        //    }
+        //}
+        //private ObservableCollection<ProductModel> _Products;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged(string propertyName)

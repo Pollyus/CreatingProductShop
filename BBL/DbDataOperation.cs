@@ -12,6 +12,7 @@ using BAL.Interfaces;
 using DAL.Interfaces;
 using DAL.Entities;
 using BLL.Models;
+using BBL.Models;
 
 namespace BAL
 {
@@ -29,17 +30,44 @@ namespace BAL
             return db.Products.GetList().Select(i => new ProductModel(i)).ToList();
         }
 
-        public void CreateUser(UserModel user)
+        public void DeleteCart(int id)
+        {
+            ShoppingCart cart = db.ShoppingCarts.GetItem(id);
+            if (cart != null)
+            {
+                db.ShoppingCarts.Delete(cart.Id);
+                Save();
+            }
+        }
+        public void CreateCart(CartModel cart)
+        {
+            ShoppingCart sc = new ShoppingCart();
+            var allcart = db.ShoppingCarts.GetList().Where(i => i.BuyerId == cart.BuyerId && i.ProductId == cart.ProductId).ToList();
+            if (allcart.Count != 0) return;
+
+            sc.Amount = 1;
+            sc.BuyerId = cart.BuyerId;
+            sc.ProductId = cart.ProductId;
+            db.ShoppingCarts.Create(sc);
+            Save();
+        }
+        public void UpdateCart(CartModel cart)
+        {
+            ShoppingCart sc = db.ShoppingCarts.GetItem(cart.Id);
+            sc.Amount = cart.Amount;
+            Save();
+        }
+        public void CreateUser(UserModel user, BuyerModel buyer)
         {
             //?????
             User us = new User();
-            Buyer buyer = new Buyer();
+            Buyer bu = new Buyer();
             //user.User_Status_Id = 4;
-            buyer.Sum = 0;
+            bu.Sum = 0;
             us.Login = user.Login;
             us.Name = user.Name;
             us.Password = user.Password;
-            buyer.Email = user.Email;
+            bu.Email = buyer.Email;
 
             db.Users.Create(us);
             Save();
@@ -53,6 +81,7 @@ namespace BAL
             db.UserSales.Create(sale);
             Save();
         }
+        
 
         public List<OrderModel> GetAllOrders()
         {

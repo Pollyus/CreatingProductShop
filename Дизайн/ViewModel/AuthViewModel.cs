@@ -360,11 +360,16 @@ namespace View.ViewModel
 
             _crud.CreateUser(new UserModel
             {
-                Email = this.Email,
+
                 Login = this.NewUserLogin,
                 Name = this.Surname + " " + this.Name,
                 Password = this.NewUserPassword
-            });
+            },
+            new BBL.Models.BuyerModel
+            {
+                Email = this.Email
+            }
+            ); ;
 
             Email = "";
             NewUserLogin = "";

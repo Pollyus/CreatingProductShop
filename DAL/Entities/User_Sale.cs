@@ -21,6 +21,7 @@ namespace DAL.Entities
         public virtual Sale Sale { get; set; }
 
         public virtual User User { get; set; }
+
         public bool Used { get; set; }
     }
 }

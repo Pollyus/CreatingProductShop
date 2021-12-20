@@ -16,16 +16,17 @@ namespace DAL.Repository
             dataBase = dbcontext;
         }
 
-        //public List<CartData> GetShoppingCart(int UserId)
-        //{
-        //    ProductContext db = new ProductContext();
+        public List<CartData> GetShoppingCart(int UserId)
+        {
+            ProductContext db = new ProductContext();
 
-        //    var result = db.Shopping_Carts
-        //                   .Where(i => i.User_Id == UserId)
-        //                   .Join(db.Products, car => car.Product_Id, pr => pr.Id, (car, pr) => new CartData { Id = car.Id, ProductId = car.Product_Id, UserId = car.User_Id, Amount = car.Amount, FullPrice = car.Amount * pr.Price, FullSale = car.Amount * pr.Sale, ProductName = pr.Name, Photo = pr.Photo })
-        //                   .ToList();
-        //    return result;
-        //}
+            var result = db.ShoppingCarts
+                           .Where(i => i.BuyerId == UserId)
+                           .Join(db.Product, car => car.ProductId, pr => pr.Id, (car, pr) => new CartData { Id = car.Id, ProductId = car.ProductId, ByuerId = car.BuyerId, Amount = car.Amount, FullPrice = car.Amount * pr.Cost, ProductName = pr.Name, Photo = pr.Photo })
+                           .Join(db.BatchOfProduct, car => car.ProductId, batch => batch.ProductCode, (car,batch)=> new CartData { FullSale =  car.Amount * batch.Sale})
+                           .ToList();
+            return result;
+        }
 
         public List<SaleData> GetSale(int UserId)
         {
@@ -42,7 +43,7 @@ namespace DAL.Repository
                                User_Id = us.UserId,
                                Offer = sale.Offer,
                                Order_Id = us.OrderId,
-                               //Used = us.Used
+                               Used = us.Used
                            }).ToList();
 
             return result;

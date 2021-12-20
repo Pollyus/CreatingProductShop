@@ -11,21 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BAL.Interfaces;
-using Дизайн.ViewModel;
-using BBL.Interfaces;
 
 namespace Дизайн.View
 {
     /// <summary>
-    /// Логика взаимодействия для ProductWindow.xaml
+    /// Логика взаимодействия для SaleUserControl.xaml
     /// </summary>
-    public partial class ProductWindow : Window
+    public partial class SaleUserControl : UserControl
     {
-        public ProductWindow(int id, IDbCrud crudService, ICategoryService categoryService, IProductCatalogService productCatalogService)
+        public SaleUserControl()
         {
             InitializeComponent();
-            DataContext = new ProductWindow(id, crudService, categoryService, productCatalogService);
         }
     }
 }

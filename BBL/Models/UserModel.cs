@@ -22,8 +22,7 @@ namespace BLL.Models
         public string Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public string Email { get; set; }
-        public decimal? Sum { get; set; }
+        
         public int TipeID { get; set; }
         ///public int user_Status_Id { get; set; }
     }

@@ -13,6 +13,7 @@ namespace DAL.Entities
         public Product()
         {
             BatchOfProduct = new HashSet<BatchOfProduct>();
+            ShoppingCart = new HashSet<ShoppingCart>();
         }
 
         public int Id { get; set; }
@@ -40,5 +41,8 @@ namespace DAL.Entities
         public virtual Brand Brand { get; set; }
 
         public virtual Category Category { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShoppingCart> ShoppingCart { get; set; }
     }
 }

@@ -6,6 +6,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Дизайн.View"
+        xmlns:view="clr-namespace:Дизайн.View"
         mc:Ignorable="d"
         d:DesignHeight="620" 
         d:DesignWidth="1300">
@@ -48,8 +49,9 @@
                             <TextBlock Foreground="White" FontSize="23" Text="Персональные скидки" HorizontalAlignment="Center" />
                         </StackPanel>
                     </TabItem.Header>
-                    <!--<view:SaleUserControl DataContext="{Binding CouponsVM}"/>-->
-                    <Grid Background="#FFE5E5E5"/>
+                    <view:SaleUserControl DataContext="{Binding SaleVM}" Margin="5,15,5,5"/>
+                    <!--<Grid Background="#FFE5E5E5"/>-->
+                   
                 </TabItem>
                 <TabItem Width="335" Height="130" >
                     <TabItem.Header>

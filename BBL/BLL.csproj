@@ -80,6 +80,9 @@
     <Compile Include="Interfaces\IProductCatalogService.cs" />
     <Compile Include="Interfaces\IProfileService.cs" />
     <Compile Include="Interfaces\IReportService.cs" />
+    <Compile Include="Models\ButchOfProductModel.cs" />
+    <Compile Include="Models\BuyerModel.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\Discount.cs" />
     <Compile Include="Models\OrderLineModel.cs" />

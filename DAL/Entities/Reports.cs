@@ -18,9 +18,9 @@ namespace DAL.Entities
     public class CartData
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int ByuerId { get; set; }
         public int ProductId { get; set; }
-        public int Amount { get; set; }
+        public decimal? Amount { get; set; }
         public string ProductName { get; set; }
         public string Photo { get; set; }
         public decimal? FullPrice { get; set; }
