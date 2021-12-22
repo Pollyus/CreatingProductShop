@@ -29,7 +29,10 @@ namespace BAL
         {
             return db.Products.GetList().Select(i => new ProductModel(i)).ToList();
         }
-
+        //public List<BatchOfProductModel> GetAllBatch()
+        //{
+        //    return db.Batchs.GetList().Select(i => new BatchOfProductModel(i)).ToList();
+        //}
         public void DeleteCart(int id)
         {
             ShoppingCart cart = db.ShoppingCarts.GetItem(id);
@@ -57,26 +60,25 @@ namespace BAL
             sc.Amount = cart.Amount;
             Save();
         }
-        public void CreateUser(UserModel user, BuyerModel buyer)
+        public void CreateBuyer( BuyerModel buyer)
         {
-            //?????
-            User us = new User();
+            
             Buyer bu = new Buyer();
-            //user.User_Status_Id = 4;
+            //buyer.User_Status_Id = 4;
             bu.Sum = 0;
-            us.Login = user.Login;
-            us.Name = user.Name;
-            us.Password = user.Password;
+            bu.Login = buyer.Login;
+            bu.Name = buyer.Name;
+            bu.Password = buyer.Password;
             bu.Email = buyer.Email;
 
-            db.Users.Create(us);
+            db.Buyers.Create(bu);
             Save();
 
-            int cuid = db.Users.GetList().Where(i => i.Login == user.Login).ToList()[0].Id;
+            int cuid = db.Buyers.GetList().Where(i => i.Login == buyer.Login).ToList()[0].Id;
             User_Sale sale = new User_Sale();
             sale.UserId = cuid;
             sale.SaleId = 4; //?
-            sale.Used = false;
+            //sale.Used = false;
 
             db.UserSales.Create(sale);
             Save();
@@ -120,7 +122,7 @@ namespace BAL
 
         public void CreateProduct(ProductModel p)
         {
-            db.Products.Create(new Product() { Id = 6, Cost = p.Cost, CategoryId = 1, Name = p.Name });
+            db.Products.Create(new Product() {  Cost = p.Cost, CategoryId = 1, Name = p.Name });
             Save();
 
         }

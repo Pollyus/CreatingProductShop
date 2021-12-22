@@ -20,8 +20,8 @@ namespace DAL.Entities
 
         public int? Quantity { get; set; }
 
-        public virtual BatchOfProduct BatchOfProduct { get; set; }
-
         public virtual Order Order { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

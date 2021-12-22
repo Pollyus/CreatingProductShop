@@ -6,21 +6,21 @@ namespace DAL.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("TypeOfUser")]
-    public partial class TypeOfUser
+    [Table("CategoryType")]
+    public partial class CategoryType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TypeOfUser()
+        public CategoryType()
         {
-            User = new HashSet<User>();
+            Category = new HashSet<Category>();
         }
 
         public int Id { get; set; }
 
-        [StringLength(20)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<Category> Category { get; set; }
     }
 }

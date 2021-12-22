@@ -17,9 +17,17 @@ namespace BAL.Models
 
         public decimal Cost { get; set; }
 
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public string Photo { get; set; }
-        public decimal? Sale { get; set; }
+        public decimal Sale { get; set; }
+        public string Description { get; set; }
+        public DateTime DateProduction { get; set; }
+        public DateTime DateExpiration { get; set; }
+        public int Amount{ get; set; }
+       
+        public bool Avalibility { get; set; }
+
+        public int? BrandId { get; set; }
         public ProductModel() { }
         public ProductModel(Product product)
         {
@@ -27,9 +35,14 @@ namespace BAL.Models
             Name = product.Name;
             Cost = product.Cost;
             CategoryId = product.CategoryId;
-            //Sale = product.Sale;
+            Sale = product.Sale;
             Photo = product.Photo;
-            
+            Description = product.Description;
+            Avalibility = product.Avalibility;
+            DateExpiration = product.DateExpiration;
+            DateProduction = product.DateProduction;
+            Amount = product.Amount;
+            Sale = product.Sale;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

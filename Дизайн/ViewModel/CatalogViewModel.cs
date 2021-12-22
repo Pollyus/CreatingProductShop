@@ -16,6 +16,7 @@ using View;
 using Дизайн;
 using Mustorg.ViewModel;
 using BBL.Models;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Дизайн.ViewModel
 {
@@ -95,33 +96,36 @@ namespace Дизайн.ViewModel
 
         private void SelectedIndexChanged(object args)
         {
+            
             if ((int)args != -1)
             {
                 productId = Products[(int)args].Id;
-                //batchProductId = Ba
+                //batchProductId = BatchProducts[(int)args].Id;
 
                 var Product = _crud.GetAllProducts().Where(i => i.Id == productId).ToList();
-                //Article = " Артикул: " + Product[0].Article.ToString();
-                //Guarantee = " Гарантия " + Product[0].Guarantee;
-                //Description = "Характеристики: \n" + Product[0].Description;
+                
+
+                Description = "Характеристики: \n" + Products[0].Description;
                 Name = Product[0].Name;
                 Photo = Product[0].Photo;
                 Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
-                //CanAddToCart = Product[0].Availability;
+                CanAddToCart = Product[0].Avalibility;
+                DateProduction = Product[0].DateProduction;
+                DateExpiration = Product[0].DateExpiration;
 
                 if (Product[0].Sale != null)
                 {
                     Sale = $"Скидка: {Product[0].Sale:0.#} руб.";
                 }
 
-                //if (Product[0].Availability == true)
-                //{
-                //    Availability = " Есть в наличии";
-                //}
-                //else
-                //{
-                //    Availability = " Нет в наличии";
-                //}
+                if (Product[0].Avalibility == true)
+                {
+                    Availability = " Есть в наличии";
+                }
+                else
+                {
+                    Availability = " Нет в наличии";
+                }
             }
         }
 
@@ -143,19 +147,34 @@ namespace Дизайн.ViewModel
         private string _Article;
         
 
-        public string Guarantee
+        public DateTime DateProduction
         {
             get
             {
-                return _Guarantee;
+                return _DateProduction;
             }
             set
             {
-                _Guarantee = value;
-                NotifyPropertyChanged("Guarantee");
+                _DateProduction = value;
+                NotifyPropertyChanged("_DateProduction");
             }
         }
-        private string _Guarantee;
+        private DateTime _DateProduction;
+
+        public DateTime DateExpiration
+        {
+            get
+            {
+                return _DateExpiration;
+            }
+            set
+            {
+                _DateExpiration = value;
+                NotifyPropertyChanged("_DateExpiration");
+            }
+        }
+        private DateTime _DateExpiration;
+
         public string Description
         {
             get
@@ -266,8 +285,11 @@ namespace Дизайн.ViewModel
             CartModel cart = new CartModel();
             cart.ProductId = productId;
             cart.BuyerId = _userId;
+            //BatchOfProductModel batchOf = new BatchOfProductModel();
+            //batchOf.ProductCode = productId;
+            //cart.BatchId = batchProductId;
             _crud.CreateCart(cart);
-            //Messenger.Default.Send(new GenericMessage<CartModel>(null));
+            Messenger.Default.Send(new GenericMessage<CartModel>(null));
         }
         #endregion
 
@@ -287,19 +309,19 @@ namespace Дизайн.ViewModel
         }
         private ObservableCollection<ProductModel> _Products;
 
-        //public ObservableCollection<Batch> BatchProducts
+        //public ObservableCollection<BatchOfProductModel> BatchProducts
         //{
         //    get
         //    {
-        //        return _Products;
+        //        return _Batch;
         //    }
         //    set
         //    {
-        //        _Products = value;
-        //        NotifyPropertyChanged("Products");
+        //        _Batch = value;
+        //        NotifyPropertyChanged("Batch");
         //    }
         //}
-        //private ObservableCollection<ProductModel> _Products;
+        //private ObservableCollection<BatchOfProductModel> _Batch;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged(string propertyName)

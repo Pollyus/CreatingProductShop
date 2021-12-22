@@ -122,12 +122,11 @@
     <Compile Include="ViewModel\AuthViewModel.cs" />
     <Compile Include="ViewModel\CartViewModel.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ProductWindow.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\SaleViewModel.cs" />
+    <Compile Include="ViewModel\SalesViewModel.cs" />
     <Compile Include="View\BusketUserControl.xaml.cs">
       <DependentUpon>BusketUserControl.xaml</DependentUpon>
     </Compile>

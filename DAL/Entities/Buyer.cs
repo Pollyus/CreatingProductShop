@@ -15,12 +15,21 @@ namespace DAL.Entities
             Busket = new HashSet<Busket>();
             Order = new HashSet<Order>();
             ShoppingCart = new HashSet<ShoppingCart>();
+            User_Sale = new HashSet<User_Sale>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
-        public int UserId { get; set; }
+        [Required]
+        [StringLength(60)]
+        public string Login { get; set; }
+
+        [StringLength(50)]
+        public string Name { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Password { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? BirthDay { get; set; }
@@ -36,12 +45,13 @@ namespace DAL.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Busket> Busket { get; set; }
 
-        public virtual User User { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoppingCart> ShoppingCart { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_Sale> User_Sale { get; set; }
     }
 }

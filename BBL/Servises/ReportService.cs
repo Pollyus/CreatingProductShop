@@ -21,34 +21,34 @@ namespace BAL.Servises
 
         //выполнить Хранимые процедуры
 
-        public List<ReportData2> ExecuteSP(string name)
-        {
+        //public List<ReportData2> ExecuteSP(string name)
+        //{
 
-            return db.Reports.ExecuteSP(name).Select(i => new ReportData2 { Категория = i.Категория, Наименование = i.Наименование, Стоимость = i.Стоимость }).ToList();
-        }
+        //    return db.Reports.ExecuteSP(name).Select(i => new ReportData2 { Категория = i.Категория, Наименование = i.Наименование, Стоимость = i.Стоимость }).ToList();
+        //}
 
-        public List<ReportData1> ReportByCategory(int Category_Id)
-        {
-            var request = db.Reports.ReportByCategory(Category_Id)
+        //public List<ReportData1> ReportByCategory(int Category_Id)
+        //{
+        //    var request = db.Reports.ReportByCategory(Category_Id)
 
-                 .Select(prod => new ReportData1 { Товар = prod.Товар, Стоимость = prod.Стоимость })
-                 .ToList();
-            return request;
-        }
+        //         .Select(prod => new ReportData1 { Товар = prod.Товар, Стоимость = prod.Стоимость })
+        //         .ToList();
+        //    return request;
+        //}
 
-        public List<ReportData1> ReportByName(string name)
-        {
-            var request = db.Reports.ReportByName(name)
+        //public List<ReportData1> ReportByName(string name)
+        //{
+        //    var request = db.Reports.ReportByName(name)
 
-                 .Select(prod => new ReportData1 { Товар = prod.Наименование, Стоимость = prod.Стоимость })
-                 .ToList();
-            return request;
-        }
+        //         .Select(prod => new ReportData1 { Товар = prod.Наименование, Стоимость = prod.Стоимость })
+        //         .ToList();
+        //    return request;
+        //}
 
-        public List<BAL.Models.ReportModels.OrderReport> GetOrders()
-        {
-            return db.Reports.GetOrders().Select(i => new BAL.Models.ReportModels.OrderReport { Код = i.Код, Адрес = i.Адрес, Дата = i.Дата, Сумма = i.Сумма, Телефон = i.Телефон, Товар = i.Товар }).ToList();
-        }
+        //public List<BAL.Models.ReportModels.OrderReport> GetOrders()
+        //{
+        //    return db.Reports.GetOrders().Select(i => new BAL.Models.ReportModels.OrderReport { Код = i.Код, Адрес = i.Адрес, Дата = i.Дата, Сумма = i.Сумма, Телефон = i.Телефон, Товар = i.Товар }).ToList();
+        //}
 
     }
 }

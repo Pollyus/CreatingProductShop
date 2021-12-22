@@ -6,41 +6,41 @@ using DAL.Entities;
 
 namespace DAL.Repository
 {
-    public class UserRepositorySQL : IRepository<User>
+    public class BuyerRepositorySQL : IRepository<Buyer>
     {
         private ProductContext dataBase;
 
-        public UserRepositorySQL(ProductContext dbcontext)
+        public BuyerRepositorySQL(ProductContext dbcontext)
         {
             this.dataBase = dbcontext;
         }
-        public List<User> GetList()
+        public List<Buyer> GetList()
         {
-            return dataBase.Users.ToList();
+            return dataBase.Buyers.ToList();
         }
 
-        public User GetItem(int id)
+        public Buyer GetItem(int id)
         {
-            return dataBase.Users.Find(id);
+            return dataBase.Buyers.Find(id);
         }
 
-        public void Create(User item)
+        public void Create(Buyer item)
         {
-            item.TipeID = 1;
-            dataBase.Users.Add(item);
+            //item.TipeId = 1;
+            dataBase.Buyers.Add(item);
         }
 
-        public void Update(User item)
+        public void Update(Buyer item)
         {
             dataBase.Entry(item).State = EntityState.Modified;
         }
 
         public void Delete(int id)
         {
-            User item = dataBase.Users.Find(id);
+            Buyer item = dataBase.Buyers.Find(id);
             if (item != null)
             {
-                dataBase.Users.Remove(item);
+                dataBase.Buyers.Remove(item);
             }
         }
 

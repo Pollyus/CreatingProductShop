@@ -14,15 +14,15 @@ namespace DAL.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BuyerID { get; set; }
 
-        public int? Quantity { get; set; }
+        public int Quantity { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProductID { get; set; }
 
-        public virtual BatchOfProduct BatchOfProduct { get; set; }
-
         public virtual Buyer Buyer { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

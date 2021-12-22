@@ -22,8 +22,8 @@ namespace DAL.Repository
 
             var result = db.ShoppingCarts
                            .Where(i => i.BuyerId == UserId)
-                           .Join(db.Product, car => car.ProductId, pr => pr.Id, (car, pr) => new CartData { Id = car.Id, ProductId = car.ProductId, ByuerId = car.BuyerId, Amount = car.Amount, FullPrice = car.Amount * pr.Cost, ProductName = pr.Name, Photo = pr.Photo })
-                           .Join(db.BatchOfProduct, car => car.ProductId, batch => batch.ProductCode, (car,batch)=> new CartData { FullSale =  car.Amount * batch.Sale})
+                           .Join(db.Product, car => car.ProductId, pr => pr.Id, (car, pr) => new CartData { Id = car.Id, ProductId = car.ProductId, BuyerId = car.BuyerId, Amount = car.Amount, FullSale = car.Amount * pr.Sale, FullPrice = car.Amount * pr.Cost, ProductName = pr.Name, Photo = pr.Photo })
+                           //.Join(db.BatchOfProducts, car => car.ProductId, batch => batch.ProductCode, (car,batch)=> new CartData { FullSale =  car.Amount * batch.Sale})
                            .ToList();
             return result;
         }
@@ -40,10 +40,10 @@ namespace DAL.Repository
                                Background = sale.Background,
                                Condition = sale.Condition,
                                Sale_Id = sale.Id,
-                               User_Id = us.UserId,
+                               Buyer_Id = us.UserId,
                                Offer = sale.Offer,
                                Order_Id = us.OrderId,
-                               Used = us.Used
+                               //Used = us.Used
                            }).ToList();
 
             return result;
@@ -79,7 +79,7 @@ namespace DAL.Repository
         {
             ProductContext db = new ProductContext();
 
-            if (db.Users.Where(i => login == i.Login).Count() == 0) return false;
+            if (db.Buyers.Where(i => login == i.Login).Count() == 0) return false;
             else return true;
         }
 
@@ -87,13 +87,13 @@ namespace DAL.Repository
         {
             ProductContext db = new ProductContext();
 
-            if (db.Users.Where(i => login == i.Login && password == i.Password).Count() == 0) return false;
+            if (db.Buyers.Where(i => login == i.Login && password == i.Password).Count() == 0) return false;
             else return true;
         }
 
         public int GetUserId(string login)
         {
-            return dataBase.Users.Where(i => i.Login == login).ToList()[0].Id;
+            return dataBase.Buyers.Where(i => i.Login == login).ToList()[0].Id;
         }
     }
 }

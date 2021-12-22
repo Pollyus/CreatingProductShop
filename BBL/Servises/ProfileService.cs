@@ -22,7 +22,7 @@ namespace BBL.Servises
 
         public List<SaleModel> GetSale(int UserId, decimal total)
         {
-            return dataBase.Services.GetSale(UserId).Where(i => i.Used == false && i.Condition <= total).Select(i => new SaleModel { Background = i.Background, Condition = i.Condition, SaleId = i.Id, SaleName = i.SaleName, UserId = i.User_Id, Id = i.Id, Offer = i.Offer, OrderId = i.Order_Id, Used = i.Used }).ToList();
+            return dataBase.Services.GetSale(UserId).Where(i => i.Used == false && i.Condition <= total).Select(i => new SaleModel { Background = i.Background, Condition = i.Condition, SaleId = i.Id, SaleName = i.SaleName, UserId = i.Buyer_Id, Id = i.Id, Offer = i.Offer, OrderId = i.Order_Id, Used = i.Used }).ToList();
         }
         public int GetUserId(string login)
         {

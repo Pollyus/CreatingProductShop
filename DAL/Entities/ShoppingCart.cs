@@ -16,7 +16,7 @@ namespace DAL.Entities
 
         public int BuyerId { get; set; }
 
-        public decimal? Amount { get; set; }
+        public decimal Amount { get; set; }
 
         public virtual Buyer Buyer { get; set; }
 

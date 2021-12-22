@@ -19,8 +19,9 @@ namespace DAL.Repository
         private SaleRepositorySQL saleRepositorySQL;
         private UserSaleRepositorySQL userSaleRepositorySQL;
         private ServiceRepositorySQL serviceRepositorySQL;
-        private UserRepositorySQL userRepositorySQL;
+        private BuyerRepositorySQL buyerRepositorySQL;
         private ShoppingCartRepositorySQL shoppingCartRepositorySQL;
+        //private BatchOfBatchOfProductRepositorySQL batchOfProductRepositorySQL;
         public DbReposSQL()
         {
             db = new ProductContext();
@@ -82,7 +83,7 @@ namespace DAL.Repository
                 return ReportRepository;
             }
         }
-
+        
         public IRepository<Sale> Sales
         {
             get
@@ -113,20 +114,19 @@ namespace DAL.Repository
             }
         }
 
-        public IRepository<User> Users
+        public IRepository<Buyer> Buyers
         {
             get
             {
-                if (userRepositorySQL == null)
-                    userRepositorySQL = new UserRepositorySQL(db);
-                return userRepositorySQL;
+                if (buyerRepositorySQL == null)
+                    buyerRepositorySQL = new BuyerRepositorySQL(db);
+                return buyerRepositorySQL;
             }
         }
 
         public int Save()
         {
-            //User user = new User();
-            //user.TipeID = 1;
+            
             return db.SaveChanges();
         }
     }

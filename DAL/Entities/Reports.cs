@@ -12,15 +12,16 @@ namespace DAL.Entities
         public string Name { get; set; }
         public string Photo { get; set; }
         public decimal Cost { get; set; }
-        public decimal? Sale { get; set; }
+        public decimal Sale { get; set; }
     }
 
     public class CartData
     {
         public int Id { get; set; }
-        public int ByuerId { get; set; }
+        public int BuyerId { get; set; }
         public int ProductId { get; set; }
-        public decimal? Amount { get; set; }
+        //public int Amount { get; set; }
+        public decimal Amount { get; set; }
         public string ProductName { get; set; }
         public string Photo { get; set; }
         public decimal? FullPrice { get; set; }
@@ -31,7 +32,7 @@ namespace DAL.Entities
     {
         public int Id { get; set; }
 
-        public int? User_Id { get; set; }
+        public int? Buyer_Id { get; set; }
 
         public int? Sale_Id { get; set; }
 
@@ -54,6 +55,7 @@ namespace DAL.Entities
         public string Name { get; set; }
         public int Product_Type_Id { get; set; }
     }
+
     public class ReportData_2
     {
         public string Наименование { get; set; }
@@ -79,3 +81,4 @@ namespace DAL.Entities
         public string Товар { get; set; }
     }
 }
+

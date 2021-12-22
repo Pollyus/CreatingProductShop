@@ -106,8 +106,8 @@ namespace Дизайн.ViewModel
             foreach (CartModel i in result)
             {
                 ProductModel product = _crud.GetProduct(i.ProductId);
-                //if (product.Amount == i.Amount) i.PlusEnabled = false;
-                //else i.PlusEnabled = true;
+                if (product.Amount == i.Amount) i.PlusEnabled = false;
+                else i.PlusEnabled = true;
                 i.ViewPrice = $"Стоимость: {i.FullPrice:0.#} руб.";
                 if (i.FullSale == null) i.FullSale = 0;
                 if (i.Amount == 1) i.MinusEnabled = false;

@@ -37,7 +37,7 @@ namespace DAL.Entities
 
         public virtual Buyer Buyer { get; set; }
 
-        public virtual Pick_Point Pick_Point { get; set; }
+        public virtual OrderStatus OrderStatus { get; set; }
 
         public virtual TypeOfPayment TypeOfPayment { get; set; }
 

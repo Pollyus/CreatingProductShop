@@ -13,13 +13,13 @@ namespace BAL.Interfaces
         /// <summary>
         /// выполнить ХП - отчет по заказам за месяц
         /// </summary>
-        List<ReportData2> ExecuteSP(string name);
+        //List<ReportData2> ExecuteSP(string name);
 
-        List<ReportData1> ReportByCategory(int Category_Id);
-        /// <summary>
-        /// Количество заказов
-        /// </summary>
-        //List<ReportData2> ReportByName(string name);
-        List<OrderReport> GetOrders();
+        //List<ReportData1> ReportByCategory(int Category_Id);
+        ///// <summary>
+        ///// Количество заказов
+        ///// </summary>
+        ////List<ReportData2> ReportByName(string name);
+        //List<OrderReport> GetOrders();
     }
 }

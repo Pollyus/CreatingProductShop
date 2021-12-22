@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using View;
 using BLL.Models;
+using BBL.Models;
 
 namespace View.ViewModel
 {
@@ -358,18 +359,17 @@ namespace View.ViewModel
             SecondPageVisibility = "Hidden";
             MessageVisibility = "Visible";
 
-            _crud.CreateUser(new UserModel
+            _crud.CreateBuyer(new BuyerModel
             {
 
                 Login = this.NewUserLogin,
                 Name = this.Surname + " " + this.Name,
-                Password = this.NewUserPassword
-            },
-            new BBL.Models.BuyerModel
-            {
+                Password = this.NewUserPassword,
                 Email = this.Email
-            }
-            ); ;
+            })
+            
+               
+             ;
 
             Email = "";
             NewUserLogin = "";
