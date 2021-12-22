@@ -2,11 +2,11 @@
 
 namespace BAL.Models
 {
-    public class TypeModel
+    public class CategoryTypeModel
     {
-        public TypeModel() { }
+        public CategoryTypeModel() { }
 
-        public TypeModel(TypeModel type)
+        public CategoryTypeModel(CategoryTypeModel type)
         {
             Id = type.Id;
             Name = type.Name;

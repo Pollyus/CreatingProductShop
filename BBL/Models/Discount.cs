@@ -15,7 +15,7 @@ namespace BAL.Models
 
         private decimal value;
 
-        public decimal MakeDiscount(decimal sum)
+        public decimal? MakeDiscount(decimal sum)
         {
             if (DateTime.Today.Month == 10 | DateTime.Today.Month == 4 | DateTime.Today.Month == 1 | DateTime.Today.Month == 7)
             {

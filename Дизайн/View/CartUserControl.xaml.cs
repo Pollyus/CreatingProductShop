@@ -17,9 +17,9 @@ namespace Дизайн.View
     /// <summary>
     /// Логика взаимодействия для BusketUserControl.xaml
     /// </summary>
-    public partial class BusketUserControl : UserControl
+    public partial class CartUserControl : UserControl
     {
-        public BusketUserControl()
+        public CartUserControl()
         {
             InitializeComponent();
         }

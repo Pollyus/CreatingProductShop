@@ -14,7 +14,7 @@ namespace DAL.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BuyerID { get; set; }
 
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [Key]
         [Column(Order = 1)]

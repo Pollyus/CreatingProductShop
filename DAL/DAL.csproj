@@ -80,7 +80,7 @@
     <Compile Include="Repository\OrderRepositorySQL.cs" />
     <Compile Include="Repository\OrderStatusRepositorySQL.cs" />
     <Compile Include="Repository\ProductRepositorySQL.cs" />
-    <Compile Include="Repository\ProductTypeRepositorySQL.cs" />
+    <Compile Include="Repository\CategoryTypeRepositorySQL.cs" />
     <Compile Include="Repository\ReportRepositorySQL.cs" />
     <Compile Include="Repository\SaleRepositorySQL.cs" />
     <Compile Include="Repository\ServiceRepositorySQL.cs" />

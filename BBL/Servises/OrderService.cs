@@ -28,17 +28,17 @@ namespace BAL.Servises
         {
             List<Product> orderedProducts = new List<Product>();
 
-            decimal sum = 0;
-            foreach (var pId in items)
-            {
-                Product product = dataBase.Products.GetItem(pId);
+            //decimal sum = 0;
+            //foreach (var pId in items)
+            //{
+            //    Product product = dataBase.Products.GetItem(pId);
 
-                sum += product.Cost;
+            //    sum += product.Cost;
 
-                orderedProducts.Add(product);
-            }
+            //    orderedProducts.Add(product);
+            //}
 
-            sum = new Discount(0.05m).MakeDiscount(sum);
+            //sum = new Discount(0.05m).MakeDiscount(sum);
 
             Order order = new Order
             {
@@ -50,7 +50,7 @@ namespace BAL.Servises
                 //order = dataBase.Orders.GetItem(orderModel.Id);
                 Date = DateTime.Now,
                 Address = orderModel.Address,
-                Sum = sum,
+               // Sum = sum,
                 PhoneNumber = orderModel.PhoneNumber,
 
                 //order.Products = orderedphones;

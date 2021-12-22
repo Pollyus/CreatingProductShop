@@ -68,7 +68,7 @@
                         <TextBlock Text="Корзина" HorizontalAlignment="Center" FontSize="23" Foreground="#013220" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--<view:BusketUserControl Margin="-335,0,0,0" DataContext="{Binding CartVM}"/>-->
+                <view:CartUserControl Margin="-335,0,0,0" DataContext="{Binding CartVM}"/>
             </TabItem>
             <TabItem Width="180" Height="80">
                 <TabItem.Header>

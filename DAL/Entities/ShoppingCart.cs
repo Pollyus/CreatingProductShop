@@ -9,7 +9,6 @@ namespace DAL.Entities
     [Table("ShoppingCart")]
     public partial class ShoppingCart
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         public int ProductId { get; set; }

@@ -33,13 +33,13 @@ namespace Mustorg.ViewModel
             _profileService = profileService;
 
             CatalogVM = new CatalogViewModel(dbCrud, categoryService, productCatalogService, dialogService, userId);
-            //CartVM = new CartViewModel(dbCrud, categoryService, productCatalogService, dialogService, orderService, profileService, userId);
+            CartVM = new CartViewModel(dbCrud, categoryService, productCatalogService, dialogService, orderService, profileService, userId);
             ProfileVM = new ProfileViewModel(dbCrud, categoryService, productCatalogService, dialogService, profileService, userId);
         }
 
         public ProfileViewModel ProfileVM { get; set; }
         public CatalogViewModel CatalogVM { get; set; }
-        //public CartViewModel CartVM { get; set; }
+        public CartViewModel CartVM { get; set; }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

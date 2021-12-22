@@ -22,9 +22,9 @@ namespace DAL.Entities
         [StringLength(100)]
         public string Name { get; set; }
 
-        public decimal Cost { get; set; }
+        public decimal? Cost { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         [StringLength(100)]
         public string Photo { get; set; }
@@ -32,9 +32,9 @@ namespace DAL.Entities
         [StringLength(100)]
         public string Description { get; set; }
 
-        public bool Avalibility { get; set; }
+        public bool? Avalibility { get; set; }
 
-        public int BrandId { get; set; }
+        public int? BrandId { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime DateProduction { get; set; }
@@ -42,9 +42,9 @@ namespace DAL.Entities
         [Column(TypeName = "date")]
         public DateTime DateExpiration { get; set; }
 
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
-        public decimal Sale { get; set; }
+        public decimal? Sale { get; set; }
 
         public virtual Brand Brand { get; set; }
 

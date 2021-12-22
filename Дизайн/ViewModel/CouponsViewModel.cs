@@ -14,7 +14,7 @@ using BBL.Models;
 
 namespace View.ViewModel
 {
-    public class SalesViewModel : INotifyPropertyChanged
+    public class CouponsViewModel : INotifyPropertyChanged
     {
         private readonly IDbCrud _crud;
         private readonly ICategoryService _categoryService;
@@ -23,7 +23,7 @@ namespace View.ViewModel
         private readonly IProfileService _profileService;
         private readonly int _userId;
 
-        public SalesViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IDialogService dialogService, IProfileService profileService, int userId)
+        public CouponsViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IDialogService dialogService, IProfileService profileService, int userId)
         {
             _crud = dbCrud;
             _categoryService = categoryService;
@@ -32,29 +32,29 @@ namespace View.ViewModel
             _profileService = profileService;
             _userId = userId;
 
-            Sales = new ObservableCollection<SaleModel>();
-            var result = _profileService.GetSale(_userId, 1000000);
+            Coupons = new ObservableCollection<SaleModel>();
+            var result = _profileService.GetSale(_userId, 100);
             foreach (var i in result)
             {
                 i.ViewText = $"Скидка {i.Offer:0.#} руб. \nПри покупке от {i.Condition:0.#} руб. ";
-                Sales.Add(i);
+                Coupons.Add(i);
             }
 
         }
 
-        public ObservableCollection<SaleModel> Sales
+        public ObservableCollection<SaleModel> Coupons
         {
             get
             {
-                return _Sales;
+                return _Coupons;
             }
             set
             {
-                _Sales = value;
-                NotifyPropertyChanged("Sales");
+                _Coupons = value;
+                NotifyPropertyChanged("Coupons");
             }
         }
-        private ObservableCollection<SaleModel> _Sales;
+        private ObservableCollection<SaleModel> _Coupons;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged(string propertyName)

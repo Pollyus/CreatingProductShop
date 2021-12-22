@@ -126,9 +126,9 @@
     <Compile Include="ViewModel\ProductWindow.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\SalesViewModel.cs" />
-    <Compile Include="View\BusketUserControl.xaml.cs">
-      <DependentUpon>BusketUserControl.xaml</DependentUpon>
+    <Compile Include="ViewModel\CouponsViewModel.cs" />
+    <Compile Include="View\CartUserControl.xaml.cs">
+      <DependentUpon>CartUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CatalogControlWindow.xaml.cs">
       <DependentUpon>CatalogControlWindow.xaml</DependentUpon>
@@ -145,10 +145,10 @@
     <Compile Include="View\ProfileControl.xaml.cs">
       <DependentUpon>ProfileControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SaleUserControl.xaml.cs">
-      <DependentUpon>SaleUserControl.xaml</DependentUpon>
+    <Compile Include="View\CouponsUserControl.xaml.cs">
+      <DependentUpon>CouponsUserControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\BusketUserControl.xaml">
+    <Page Include="View\CartUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,7 +180,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SaleUserControl.xaml">
+    <Page Include="View\CouponsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

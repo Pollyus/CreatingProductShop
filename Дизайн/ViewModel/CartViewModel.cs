@@ -221,6 +221,21 @@ namespace Дизайн.ViewModel
         {
             OrderVisibility = "Hidden";
         }
+        public ICommand MakeOrder
+        {
+            get
+            {
+                if (_makeOrder == null)
+                    _makeOrder = new RelayCommand(args => OpenMakeOrder(args));
+                return _makeOrder;
+            }
+        }
+        private ICommand _makeOrder;
+        private void OpenMakeOrder(object args)
+        {
+            OrderVisibility = "Visible";
+        }
+
         public ICommand EndOrder
         {
             get

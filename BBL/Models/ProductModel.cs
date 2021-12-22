@@ -15,17 +15,17 @@ namespace BAL.Models
 
         public string Name { get; set; }
 
-        public decimal Cost { get; set; }
+        public decimal? Cost { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public string Photo { get; set; }
-        public decimal Sale { get; set; }
+        public decimal? Sale { get; set; }
         public string Description { get; set; }
         public DateTime DateProduction { get; set; }
         public DateTime DateExpiration { get; set; }
-        public int Amount{ get; set; }
-       
-        public bool Avalibility { get; set; }
+        public int? Amount{ get; set; }
+        public string ViewPrice { get; set; }
+        public bool? Avalibility { get; set; }
 
         public int? BrandId { get; set; }
         public ProductModel() { }

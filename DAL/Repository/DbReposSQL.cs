@@ -14,6 +14,7 @@ namespace DAL.Repository
         private ProductRepositorySQL ProductRepository;
         private OrderRepositorySQL OrderRepository;
         private CategoryRepositorySQL CategoryRepository;
+        private CategoryTypeRepositorySQL CategoryTypeRepository;
         private OrderLinesRepositorySQL OrderLinesRepository;
         private ReportRepositorySQL ReportRepository;
         private SaleRepositorySQL saleRepositorySQL;
@@ -63,6 +64,15 @@ namespace DAL.Repository
                 if (CategoryRepository == null)
                     CategoryRepository = new CategoryRepositorySQL(db);
                 return CategoryRepository;
+            }
+        }
+        public IRepository<CategoryType> CategoryTypes
+        {
+            get
+            {
+                if (CategoryTypeRepository == null)
+                    CategoryTypeRepository = new CategoryTypeRepositorySQL(db);
+                return CategoryTypeRepository;
             }
         }
         public IRepository<OrderLines> OrderLines

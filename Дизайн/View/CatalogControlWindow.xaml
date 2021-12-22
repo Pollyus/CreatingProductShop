@@ -148,13 +148,13 @@
                     </Grid>
                     <!--Описание-->
                     <Grid Grid.Row="1" Grid.Column="1" Margin="9.6,12,9.4,10.2" Background="White">
-                        <ScrollViewer Margin="10,45,10,10" VerticalScrollBarVisibility="Auto">
-                            <TextBlock Text="{Binding Description}"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Height="210"/>
+                        <ScrollViewer Margin="100,45,10,10" VerticalScrollBarVisibility="Auto">
+                                <TextBlock Margin="10,45,10,10" Text="{Binding Path = Description}"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Height="210"/>
                         </ScrollViewer>
                         <TextBlock  HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" TextWrapping="Wrap" Text="Дата изготовления: " VerticalAlignment="Top" Width="236"/>
-                        <TextBlock HorizontalAlignment="Left" Height="50" Margin="11,44,0,0" TextWrapping="Wrap" Text="{Binding DateProduction}" VerticalAlignment="Top" Width="235"/>
-                        <TextBlock HorizontalAlignment="Left" Height="30" Margin="335,10,0,0" TextWrapping="Wrap" Text="Годен до: " VerticalAlignment="Top" Width="216"/>
-                        <TextBlock HorizontalAlignment="Left" Height="50" Margin="316,44,0,0" TextWrapping="Wrap" Text="{Binding DateExpiration}" VerticalAlignment="Top" Width="235"/>
+                            <TextBlock HorizontalAlignment="Left" Height="50" Margin="11,44,0,0" TextWrapping="Wrap" Text="{Binding Path = DateProduction}" VerticalAlignment="Top" Width="235"/>
+                        <!--<TextBlock HorizontalAlignment="Left" Height="30" Margin="335,10,0,0" TextWrapping="Wrap" Text="Годен до: " VerticalAlignment="Top" Width="216"/>-->
+                            <TextBlock HorizontalAlignment="Left" Height="50" Margin="316,44,0,0" TextWrapping="Wrap" Text="{Binding Path = DateExpiration}" VerticalAlignment="Top" Width="235"/>
                         <Grid.Effect>
                             <DropShadowEffect ShadowDepth="0"/>
                         </Grid.Effect>
@@ -170,8 +170,7 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Margin="5,0,0,0" Grid.Row="0" Text="{Binding Guarantee}" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Height="32"/>
-                        <TextBlock Margin="5,9.6,0,9.6" Grid.Row="1" Text="{Binding Article}" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Height="32"/>
+                           
                         <TextBlock Margin="5,0,0,0" Grid.Row="2" Text="{Binding Availability}" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Height="32"/>
 
                         <TextBlock Margin="0,0,5,0" Grid.Row="0" Grid.Column="1" Text="{Binding Price}" FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Black" Height="38"/>
@@ -182,7 +181,7 @@
                                 <ColumnDefinition Width="253*"></ColumnDefinition>
                                 <ColumnDefinition Width="62*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Добавить в корзину" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,56,21"/>
+                            <TextBlock Text="Нажмите, чтобы добавить в корзину" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,56,21"/>
                             <Button Command="{Binding AddToCart}" Background="#013220"  Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Center" IsEnabled="{Binding CanAddToCart}" Grid.ColumnSpan="2" Height="41" Margin="328,0,19.4,0" Width="91">
                                 <materialDesign:PackIcon Kind="CartAdd"/>
                             </Button>

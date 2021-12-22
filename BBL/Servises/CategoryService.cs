@@ -19,12 +19,12 @@ namespace BBL.Servises
             dataBase = dbRepository;
         }
 
-        public List<TypeModel> GetTypeModels()
+        public List<CategoryTypeModel> GetTypeModels()
         {
-            var Types = dataBase.Categories.GetList().Select(i => new TypeModel { Id = i.Id, Name = i.CategoryName }).ToList();
+            var Types = dataBase.CategoryTypes.GetList().Select(i => new CategoryTypeModel { Id = i.Id, Name = i.Name }).ToList();
             foreach (var type in Types)
             {
-                var categories = dataBase.Categories.GetList().Where(i => i.Id == type.Id).Select(i => new CategoryModel { Id = i.Id, Name = i.CategoryName }).ToList();
+                var categories = dataBase.Categories.GetList().Where(i => i.TypeId == type.Id).Select(i => new CategoryModel { Id = i.Id, Name = i.CategoryName }).ToList();
                 type.Categories = new System.Collections.ObjectModel.ObservableCollection<CategoryModel>();
                 foreach (var cat in categories)
                 {

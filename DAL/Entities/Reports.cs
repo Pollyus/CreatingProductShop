@@ -11,7 +11,7 @@ namespace DAL.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Photo { get; set; }
-        public decimal Cost { get; set; }
+        public decimal? Cost { get; set; }
         public decimal Sale { get; set; }
     }
 
@@ -38,7 +38,7 @@ namespace DAL.Entities
 
         public int? Order_Id { get; set; }
 
-        public bool Used { get; set; }
+        public bool? Used { get; set; }
 
         public string SaleName { get; set; }
 
@@ -59,7 +59,7 @@ namespace DAL.Entities
     public class ReportData_2
     {
         public string Наименование { get; set; }
-        public decimal Стоимость { get; set; }
+        public decimal? Стоимость { get; set; }
         public string Категория { get; set; }
     }
 

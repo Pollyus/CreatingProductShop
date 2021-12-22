@@ -88,7 +88,7 @@
     <Compile Include="Models\OrderLineModel.cs" />
     <Compile Include="Models\OrderlModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
-    <Compile Include="Models\ProductType.cs" />
+    <Compile Include="Models\CategoryTypeModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Models\SaleModel.cs" />
     <Compile Include="Models\TypeOfPaymentModel.cs" />

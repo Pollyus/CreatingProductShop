@@ -39,7 +39,7 @@ namespace Дизайн.ViewModel
             _userId = userId;
 
             var tempTypes = _categoryService.GetTypeModels();
-            Types = new ObservableCollection<TypeModel>();
+            Types = new ObservableCollection<CategoryTypeModel>();
             foreach (var i in tempTypes)
             {
                 Types.Add(i);
@@ -49,11 +49,12 @@ namespace Дизайн.ViewModel
             _Products = new ObservableCollection<ProductModel>();
             foreach (var i in tempProd)
             {
-                //i.ViewPrice = $"{i.Price:0.#} руб.";
+                i.ViewPrice = $"{i.Cost:0.#} руб.";
                 
                 _Products.Add(i);
             }
         }
+
         #region Выбор элемента в дереве
         private string _selectedCategory;
 
@@ -75,7 +76,7 @@ namespace Дизайн.ViewModel
             var tempProd = _catalogService.GetProductsByCategory(_selectedCategory);
             foreach (var i in tempProd)
             {
-                //i.ViewPrice = $"{i.Price:0.#} руб.";
+                i.ViewPrice = $"{i.Cost:0.#} руб.";
                 Products.Add(i);
             }
         }
@@ -100,18 +101,17 @@ namespace Дизайн.ViewModel
             if ((int)args != -1)
             {
                 productId = Products[(int)args].Id;
-                //batchProductId = BatchProducts[(int)args].Id;
+                
 
                 var Product = _crud.GetAllProducts().Where(i => i.Id == productId).ToList();
                 
-
-                Description = "Характеристики: \n" + Products[0].Description;
+                Description = "Описание: \n" + Product[0].Description;
                 Name = Product[0].Name;
                 Photo = Product[0].Photo;
                 Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
                 CanAddToCart = Product[0].Avalibility;
-                DateProduction = Product[0].DateProduction;
-                DateExpiration = Product[0].DateExpiration;
+                DateProduction = $"Дата производства \n: {Product[0].DateProduction}";
+                DateExpiration = $"Годен до \n: {Product[0].DateExpiration}";
 
                 if (Product[0].Sale != null)
                 {
@@ -128,26 +128,11 @@ namespace Дизайн.ViewModel
                 }
             }
         }
-
+        #endregion
 
         private int productId; 
-        //private int batchProductId;
-        public string Article
-        {
-            get
-            {
-                return _Article;
-            }
-            set
-            {
-                _Article = value;
-                NotifyPropertyChanged("Article");
-            }
-        }
-        private string _Article;
         
-
-        public DateTime DateProduction
+        public string DateProduction
         {
             get
             {
@@ -159,9 +144,9 @@ namespace Дизайн.ViewModel
                 NotifyPropertyChanged("_DateProduction");
             }
         }
-        private DateTime _DateProduction;
+        private string _DateProduction;
 
-        public DateTime DateExpiration
+        public string DateExpiration
         {
             get
             {
@@ -173,7 +158,7 @@ namespace Дизайн.ViewModel
                 NotifyPropertyChanged("_DateExpiration");
             }
         }
-        private DateTime _DateExpiration;
+        private string _DateExpiration;
 
         public string Description
         {
@@ -253,7 +238,9 @@ namespace Дизайн.ViewModel
             }
         }
         private string _Availability;
-        public bool CanAddToCart
+
+        #region Добавить в корзину
+        public bool? CanAddToCart
         {
             get
             {
@@ -265,7 +252,7 @@ namespace Дизайн.ViewModel
                 NotifyPropertyChanged("CanAddToCart");
             }
         }
-        private bool _CanAddToCart;
+        private bool? _CanAddToCart;
 
 
 
@@ -285,15 +272,12 @@ namespace Дизайн.ViewModel
             CartModel cart = new CartModel();
             cart.ProductId = productId;
             cart.BuyerId = _userId;
-            //BatchOfProductModel batchOf = new BatchOfProductModel();
-            //batchOf.ProductCode = productId;
-            //cart.BatchId = batchProductId;
             _crud.CreateCart(cart);
             Messenger.Default.Send(new GenericMessage<CartModel>(null));
         }
         #endregion
-
-        public ObservableCollection<TypeModel> Types { get; set; }
+       
+        public ObservableCollection<CategoryTypeModel> Types { get; set; }
 
         public ObservableCollection<ProductModel> Products
         {
@@ -309,19 +293,7 @@ namespace Дизайн.ViewModel
         }
         private ObservableCollection<ProductModel> _Products;
 
-        //public ObservableCollection<BatchOfProductModel> BatchProducts
-        //{
-        //    get
-        //    {
-        //        return _Batch;
-        //    }
-        //    set
-        //    {
-        //        _Batch = value;
-        //        NotifyPropertyChanged("Batch");
-        //    }
-        //}
-        //private ObservableCollection<BatchOfProductModel> _Batch;
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged(string propertyName)

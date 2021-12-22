@@ -18,7 +18,7 @@ namespace BBL.Models
 
         public int? OrderId { get; set; }
 
-        public bool Used { get; set; }
+        public bool? Used { get; set; }
 
         public string SaleName { get; set; }
 

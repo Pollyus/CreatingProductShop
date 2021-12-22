@@ -43,7 +43,7 @@ namespace DAL.Repository
                                Buyer_Id = us.UserId,
                                Offer = sale.Offer,
                                Order_Id = us.OrderId,
-                               //Used = us.Used
+                               Used = us.Used
                            }).ToList();
 
             return result;

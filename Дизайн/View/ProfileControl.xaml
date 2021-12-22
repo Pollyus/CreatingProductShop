@@ -49,7 +49,7 @@
                             <TextBlock Foreground="White" FontSize="23" Text="Персональные скидки" HorizontalAlignment="Center" />
                         </StackPanel>
                     </TabItem.Header>
-                    <view:SaleUserControl DataContext="{Binding SaleVM}" Margin="5,15,5,5"/>
+                    <view:CouponsUserControl DataContext="{Binding SalesVM}" Margin="5,15,5,5"/>
                     <!--<Grid Background="#FFE5E5E5"/>-->
                    
                 </TabItem>

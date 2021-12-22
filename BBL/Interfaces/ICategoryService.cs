@@ -9,6 +9,6 @@ namespace BBL.Interfaces
 {
     public interface ICategoryService
     {
-       List<TypeModel> GetTypeModels();
+       List<CategoryTypeModel> GetTypeModels();
     }
 }

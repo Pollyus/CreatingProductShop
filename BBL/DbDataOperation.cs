@@ -78,7 +78,7 @@ namespace BAL
             User_Sale sale = new User_Sale();
             sale.UserId = cuid;
             sale.SaleId = 4; //?
-            //sale.Used = false;
+            sale.Used = false;
 
             db.UserSales.Create(sale);
             Save();
@@ -93,6 +93,7 @@ namespace BAL
         {
             return new OrderModel(db.Orders.GetItem(Id));
         }
+        
 
         public void DeleteOrder(int id)
         {
@@ -112,7 +113,10 @@ namespace BAL
         {
             return db.Categories.GetList().Select(i => new CategoryModel(i)).ToList();
         }
-
+        //public List<CategoryTypeModel> GetAllCategoryTypes()
+        //{
+        //    return db.CategoryTypes.GetList().Select(i => new CategoryTypeModel(i)).ToList();
+        //}
         public ProductModel GetProduct(int Id)
         {
             return new ProductModel(db.Products.GetItem(Id));
@@ -127,12 +131,17 @@ namespace BAL
 
         }
 
-        public void UpdateProduct(ProductModel p)
+        public void UpdateProduct(ProductModel product)
         {
-            Product pr = db.Products.GetItem(p.Id);
-            pr.Name = p.Name;
-            pr.Cost = p.Cost;
-            pr.CategoryId = p.CategoryId;
+            Product prod = db.Products.GetItem(product.Id);
+            prod.Name = product.Name;
+            prod.Amount = product.Amount;
+            prod.Cost = product.Cost;
+            prod.Sale = product.Sale;
+            prod.Description = product.Description;
+            prod.Avalibility = product.Avalibility;
+            prod.BrandId = product.BrandId;
+            prod.CategoryId = product.CategoryId;
             Save();
         }
 
