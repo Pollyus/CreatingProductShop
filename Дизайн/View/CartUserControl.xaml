@@ -120,7 +120,7 @@
             <Grid Grid.Column="1" Margin="10,10,10,10" Background="White" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="68*"></RowDefinition>
-                    <RowDefinition Height="301*"></RowDefinition>
+                    <RowDefinition Height="700*"></RowDefinition>
                     <RowDefinition Height="231*"></RowDefinition>
                 </Grid.RowDefinitions>
 
@@ -139,17 +139,6 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-
-                        <TextBlock Text="Выберите адрес доставки" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="-349,-367,0,407.2"/>
-
-                        <TextBox Text="{Binding UserAddress}" FontSize="20" Foreground ="#013220"  materialDesign:HintAssist.HelperText="{Binding LoginAssist}" BorderThickness="0,0,0,4" materialDesign:HintAssist.Hint="Введите адрес" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="-349,-335,484.4,335.2"  />
-                        <ComboBox SelectedIndex="{Binding SelectedPickPoint}" Grid.Row="1" Margin="30,5,30,23" ItemsSource="{Binding PickPoint}" FontSize="14" materialDesign:HintAssist.Hint="Пункт выдачи" BorderBrush="#FF160025" Foreground="Black" BorderThickness="0,0,0,2">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=Name}"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
                     </Grid>
 
                     <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Hidden">
@@ -169,7 +158,7 @@
                         <RadioButton Grid.Column="1" Grid.Row="2" Style="{DynamicResource MaterialDesignUserForegroundRadioButton}" Content="Наличными"  VerticalAlignment="Center" HorizontalAlignment="Left" Height="17"/>
                     </Grid>
 
-                    <Grid Grid.Column="0" Grid.Row="1">
+                    <Grid Grid.Column="0" Margin="0,10,0.4,0" Grid.RowSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="25*"></RowDefinition>
                             <RowDefinition Height="25*"></RowDefinition>
@@ -185,31 +174,14 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-
-                        <TextBlock Text="Примените скидку" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="-812,-250,0,290.2"/>
-
-                        <ComboBox x:Name="SaleBox" Margin="-812,-218,946.6,219.2" SelectedIndex="{Binding SelectedSale}" ItemsSource="{Binding Sale}" FontSize="20" materialDesign:HintAssist.Hint="Выберете скидку"  BorderBrush="#FF160025" Foreground="Black" BorderThickness="0,0,0,2">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="DropDownClosed">
-                                    <i:InvokeCommandAction Command="{Binding SelectedIndexChangedCommand}" CommandParameter="{Binding ElementName=SaleBox, Path=SelectedIndex}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=SaleName}"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        <Button Command="{Binding EndOrder}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,9.6,20" Content="Заказать" Foreground="White" BorderBrush="#013220" Background="#013220" Height="52" Width="130" Grid.RowSpan="2"/>
+                        <Button Command="{Binding EndMakeOrder}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,18" Content="Назад" Foreground="White" BorderBrush="#013220" Background="#013220" Height="52" Width="130" Grid.RowSpan="2"/>
                     </Grid>
-                    <Button Command="{Binding EndMakeOrder}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,15" Content="Назад" Foreground="White" BorderBrush="#013220" Background="#013220" Height="52" Width="130">
-
-                    </Button>
-                    <Button Command="{Binding EndOrder}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,15" Content="Заказать" Foreground="White" BorderBrush="#013220" Background="#013220" Height="52" Width="130"/>
 
                 </Grid>
                 <TextBlock Text="Ваш заказ" FontWeight="DemiBold" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Height="32"/>
                 <Grid Grid.Row="1" Background="#e3fae3" Margin="0,0,0.2,0">
-                    <ListView Name="orderList" Foreground="Black" ItemsSource="{Binding Cart}" Background="#FFF3F3F3" Margin="0,0,-0.2,-121.2">
+                    <ListView Name="orderList" Foreground="Black" ItemsSource="{Binding Cart}" Background="#FFF3F3F3" Margin="0,0,-0.2,-0.2">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal" MaxWidth="{Binding ElementName=orderList, Path=ActualWidth}"/>
@@ -225,7 +197,7 @@
                                         <Grid Background="White" Margin="0,0,0,45" Grid.RowSpan="2">
                                             <Image Source="{Binding Path=Photo}" Stretch="Uniform" HorizontalAlignment="Center"/>
                                         </Grid>
-                                        <materialDesign:Badged Height="170" Width="120" Margin="15" Badge="{Binding Path=Amount}" BadgeBackground="#FFB9FF00">
+                                        <materialDesign:Badged Height="170" Width="120" Margin="15" Badge="{Binding Path=Amount}" BadgeBackground="#013220">
                                             <StackPanel Margin="0,145,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="White" FontSize="14" Text="{Binding Path=ViewTotal}" Style="{StaticResource MaterialDesignSubtitle1TextBlock}" />
                                             </StackPanel>
@@ -242,8 +214,22 @@
                     <DropShadowEffect ShadowDepth="0"/>
                 </Grid.Effect>
             </Grid>
-            <TextBlock Foreground="Black" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20,0,0,345" Grid.Column="0" Text="Примените скидку" Style="{StaticResource MaterialDesignBody1TextBlock}"  RenderTransformOrigin="0.745,0.576" />
-            <TextBox Text="{Binding UserPhone}" FontSize="20" Foreground ="#013220"  materialDesign:HintAssist.HelperText="{Binding LoginAssist}" BorderThickness="0,0,0,4" materialDesign:HintAssist.Hint="Введите телефона" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,280,10,276"  />
+            <!--Инфо о пользователе-->
+            <TextBox Text="{Binding UserAddress}"  FontSize="20" Foreground ="#013220"  materialDesign:HintAssist.HelperText="{Binding LoginAssist}" BorderThickness="0,0,0,4" materialDesign:HintAssist.Hint="Введите адрес" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,85,939,437" Grid.ColumnSpan="2"  />
+            <ComboBox x:Name="SaleBox" Margin="19,219,10,310" SelectedIndex="{Binding SelectedSale}" ItemsSource="{Binding Sale}" FontSize="20" materialDesign:HintAssist.Hint="Выберете скидку"  BorderBrush="#FF160025" Foreground="Black" BorderThickness="0,0,0,2">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="DropDownClosed">
+                        <i:InvokeCommandAction Command="{Binding SelectedIndexChangedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=SaleBox}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding SaleName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Примените скидку" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,374"/>
+            <TextBlock Text="Введите адрес доставки" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,508"/>
         </Grid>
     </Grid>
 </UserControl>

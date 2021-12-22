@@ -43,6 +43,7 @@ namespace Дизайн.ViewModel
             OrderVisibility = "Hidden";
             CodeSale = $"По данной скидке вы сэкономили: 0 руб.";
             UserAddress= "";
+            UserAddress = "";
             UpdateOrderPage();
             
             Messenger.Default.Register<GenericMessage<CartModel>>(this, Update);
@@ -220,6 +221,11 @@ namespace Дизайн.ViewModel
         private void CloseMakeOrder(object args)
         {
             OrderVisibility = "Hidden";
+            _crud.CreateBuyer(new BuyerModel
+            {
+                Address = this.UserAddress
+
+            });
         }
         public ICommand MakeOrder
         {
@@ -355,7 +361,7 @@ namespace Дизайн.ViewModel
         #endregion
 
         private string _UserAddress;
-        public string UserLogin
+        public string UserAddress
         {
             get
             {
@@ -367,21 +373,20 @@ namespace Дизайн.ViewModel
                 NotifyPropertyChanged("UserAddress");
             }
         }
-        
-        
-        private string UserAddress;
-        public string NewUserLogin
+       
+        public string UserPhone
         {
             get
             {
-                return UserAddress;
+                return _UserPhone;
             }
             set
             {
-                UserAddress = value;
-                NotifyPropertyChanged("UserAddress");
+                _UserPhone = value;
+                NotifyPropertyChanged("UserPhone");
             }
         }
+        private string _UserPhone;
     }
 
 }
