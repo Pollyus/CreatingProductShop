@@ -22,7 +22,7 @@ namespace DAL.Repository
         private ServiceRepositorySQL serviceRepositorySQL;
         private BuyerRepositorySQL buyerRepositorySQL;
         private ShoppingCartRepositorySQL shoppingCartRepositorySQL;
-        //private BatchOfBatchOfProductRepositorySQL batchOfProductRepositorySQL;
+        private OrderStatusRepositorySQL orderStatusRepository;
         public DbReposSQL()
         {
             db = new ProductContext();
@@ -47,7 +47,15 @@ namespace DAL.Repository
                 return OrderRepository;
             }
         }
-
+        public IRepository<OrderStatus> OrderStatuses
+        {
+            get
+            {
+                if (orderStatusRepository == null)
+                    orderStatusRepository = new OrderStatusRepositorySQL(db);
+                return orderStatusRepository;
+            }
+        }
         public IRepository<ShoppingCart> ShoppingCarts
         {
             get

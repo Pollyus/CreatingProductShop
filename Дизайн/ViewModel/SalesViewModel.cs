@@ -14,7 +14,7 @@ using BBL.Models;
 
 namespace View.ViewModel
 {
-    public class CouponsViewModel : INotifyPropertyChanged
+    public class SalesViewModel : INotifyPropertyChanged
     {
         private readonly IDbCrud _crud;
         private readonly ICategoryService _categoryService;
@@ -23,7 +23,7 @@ namespace View.ViewModel
         private readonly IProfileService _profileService;
         private readonly int _userId;
 
-        public CouponsViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IDialogService dialogService, IProfileService profileService, int userId)
+        public SalesViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IDialogService dialogService, IProfileService profileService, int userId)
         {
             _crud = dbCrud;
             _categoryService = categoryService;
@@ -32,29 +32,29 @@ namespace View.ViewModel
             _profileService = profileService;
             _userId = userId;
 
-            Coupons = new ObservableCollection<SaleModel>();
+            Sales = new ObservableCollection<SaleModel>();
             var result = _profileService.GetSale(_userId, 100);
             foreach (var i in result)
             {
                 i.ViewText = $"Скидка {i.Offer:0.#} руб. \nПри покупке от {i.Condition:0.#} руб. ";
-                Coupons.Add(i);
+                Sales.Add(i);
             }
 
         }
 
-        public ObservableCollection<SaleModel> Coupons
+        public ObservableCollection<SaleModel> Sales
         {
             get
             {
-                return _Coupons;
+                return _Sales;
             }
             set
             {
-                _Coupons = value;
-                NotifyPropertyChanged("Coupons");
+                _Sales = value;
+                NotifyPropertyChanged("Sales");
             }
         }
-        private ObservableCollection<SaleModel> _Coupons;
+        private ObservableCollection<SaleModel> _Sales;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged(string propertyName)

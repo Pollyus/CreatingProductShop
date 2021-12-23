@@ -23,7 +23,7 @@ namespace DAL.Repository
             var result = db.ShoppingCarts
                            .Where(i => i.BuyerId == UserId)
                            .Join(db.Product, car => car.ProductId, pr => pr.Id, (car, pr) => new CartData { Id = car.Id, ProductId = car.ProductId, BuyerId = car.BuyerId, Amount = car.Amount, FullSale = car.Amount * pr.Sale, FullPrice = car.Amount * pr.Cost, ProductName = pr.Name, Photo = pr.Photo })
-                           //.Join(db.BatchOfProducts, car => car.ProductId, batch => batch.ProductCode, (car,batch)=> new CartData { FullSale =  car.Amount * batch.Sale})
+                           
                            .ToList();
             return result;
         }
@@ -38,7 +38,7 @@ namespace DAL.Repository
                                Id = us.Id,
                                SaleName = sale.Name,
                                Background = sale.Background,
-                               Condition = sale.Condition,
+                               Condition = sale.Condition, 
                                Sale_Id = sale.Id,
                                Buyer_Id = us.UserId,
                                Offer = sale.Offer,

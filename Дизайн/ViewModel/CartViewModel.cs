@@ -43,7 +43,7 @@ namespace Дизайн.ViewModel
             OrderVisibility = "Hidden";
             CodeSale = $"По данной скидке вы сэкономили: 0 руб.";
             UserAddress= "";
-            UserAddress = "";
+            
             UpdateOrderPage();
             
             Messenger.Default.Register<GenericMessage<CartModel>>(this, Update);
@@ -140,7 +140,7 @@ namespace Дизайн.ViewModel
                 Sale.Add(i);
             }
 
-            StatusSale = $"Скидка за статус: {total * 0.05m:0.##} руб.";
+            //StatusSale = $"Скидка за статус: {total * 0.05m:0.##} руб.";
             Total = $"Итого: {total * 0.95m:0.##} руб.";
             CodeSale = $"Применив скидку вы сэкономили: 0 руб.";
             SelectedSale = 0;
@@ -374,19 +374,7 @@ namespace Дизайн.ViewModel
             }
         }
        
-        public string UserPhone
-        {
-            get
-            {
-                return _UserPhone;
-            }
-            set
-            {
-                _UserPhone = value;
-                NotifyPropertyChanged("UserPhone");
-            }
-        }
-        private string _UserPhone;
+        
     }
 
 }

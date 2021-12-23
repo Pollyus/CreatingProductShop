@@ -77,13 +77,17 @@ namespace BAL
             int cuid = db.Buyers.GetList().Where(i => i.Login == buyer.Login).ToList()[0].Id;
             User_Sale sale = new User_Sale();
             sale.UserId = cuid;
-            sale.SaleId = 4; //?
+            sale.SaleId = 1; //?
             sale.Used = false;
 
             db.UserSales.Create(sale);
             Save();
         }
-        
+
+        public List<StatusModel> GetAllStatuses()
+        {
+            return db.OrderStatuses.GetList().Select(i => new StatusModel(i)).ToList();
+        }
 
         public List<OrderModel> GetAllOrders()
         {

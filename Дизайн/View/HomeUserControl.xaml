@@ -14,5 +14,22 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="1" Grid.Column="1" Background="#FFF3F3F3"></Grid>
         <Grid Grid.Row="1" Grid.Column="0" Background="#013220"></Grid>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="30">
+                <Image Source="/Assets/tiger.jpg" HorizontalAlignment="Left" />
+                <TextBlock HorizontalAlignment="Left" Height="67" Margin="379,15,0,0" TextWrapping="Wrap" Text="С наступающим новым годом!" FontSize="30" FontWeight="DemiBold" VerticalAlignment="Top" Width="516"/>
+                <TextBlock HorizontalAlignment="Left" Height="71" Margin="379,87,0,0" TextWrapping="Wrap" FontSize="25" Text="Успейте заказать продукты к новогоднему столу в нашем магазине" VerticalAlignment="Top" Width="516"/>
+
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

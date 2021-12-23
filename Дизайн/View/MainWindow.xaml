@@ -79,14 +79,14 @@
                 </TabItem.Header>
                 <view:ProfileControl Margin="-331,10,0,0" DataContext="{Binding ProfileVM}"></view:ProfileControl>
             </TabItem>
-            <TabItem Width="180" Height="80">
+            <!--<TabItem Width="180" Height="80">
                 <TabItem.Header>
                     <StackPanel Height="auto" Width="auto">
                         <materialDesign:PackIcon Kind="Heart" Foreground="#013220" Width="50" Height="50" HorizontalAlignment="Center" />
                         <TextBlock Foreground="#013220" Text="Любимое" FontSize="23" HorizontalAlignment="Center" />
                     </StackPanel>
                 </TabItem.Header>
-            </TabItem>
+            </TabItem>-->
 
         </TabControl>
 

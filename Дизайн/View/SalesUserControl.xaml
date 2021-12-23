@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Дизайн.View.CouponsUserControl"
+﻿<UserControl x:Class="Дизайн.View.SalesUserControl"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -18,7 +18,7 @@
 
         <Grid Background="#FFF3F3F3">
             <ScrollViewer Background="#FFF3F3F3" Margin="0">
-                <ListView x:Name="listView" ItemsSource="{Binding Coupons}" Width="Auto" Height="Auto" Margin="0,0,0,0">
+                <ListView x:Name="listView" ItemsSource="{Binding Sales}" Width="716" Height="Auto" Margin="0,0,0,0">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" MaxWidth="{Binding ElementName=listView, Path=ActualWidth}"/>

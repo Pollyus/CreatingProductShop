@@ -17,9 +17,9 @@ namespace Дизайн.View
     /// <summary>
     /// Логика взаимодействия для SaleUserControl.xaml
     /// </summary>
-    public partial class CouponsUserControl : UserControl
+    public partial class SalesUserControl : UserControl
     {
-        public CouponsUserControl()
+        public SalesUserControl()
         {
             InitializeComponent();
         }

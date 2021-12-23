@@ -49,7 +49,7 @@
                             <TextBlock Foreground="White" FontSize="23" Text="Персональные скидки" HorizontalAlignment="Center" />
                         </StackPanel>
                     </TabItem.Header>
-                    <view:CouponsUserControl DataContext="{Binding SalesVM}" Margin="5,15,5,5"/>
+                    <view:SalesUserControl DataContext="{Binding SalesVM}" Margin="5,15,5,5"/>
                     <!--<Grid Background="#FFE5E5E5"/>-->
                    
                 </TabItem>
@@ -60,6 +60,7 @@
                             <TextBlock Foreground="White" FontSize="23" Text="Отчеты" HorizontalAlignment="Center" />
                         </StackPanel>
                     </TabItem.Header>
+                    <!--<view:StatisticUserControl DataContext="{Binding StatsVM}"/>-->
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>

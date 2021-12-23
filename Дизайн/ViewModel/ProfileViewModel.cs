@@ -34,10 +34,10 @@ namespace Mustorg.ViewModel
             _profileService = profileService;
             _userId = userId;
 
-            CouponsVM = new CouponsViewModel(dbCrud, categoryService, productCatalogService, dialogService, profileService, userId);
+            SalesVM = new SalesViewModel(dbCrud, categoryService, productCatalogService, dialogService, profileService, userId);
         }
 
-        public CouponsViewModel CouponsVM { get; set; }
+        public SalesViewModel SalesVM { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged(string propertyName)

@@ -91,6 +91,7 @@
     <Compile Include="Models\CategoryTypeModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Models\SaleModel.cs" />
+    <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Models\TypeOfPaymentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servises\CategoryService.cs" />

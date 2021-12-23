@@ -28,6 +28,14 @@ namespace BAL.Models
 
         public decimal? Price { get; set; }
 
+        public string ViewAmount { get; set; }
+
+        public string ViewPrice { get; set; }
+
+        public string Photo { get; set; }
+
+        public string Name { get; set; }
+
         public decimal? Amount { get; set; }
     }
 }
