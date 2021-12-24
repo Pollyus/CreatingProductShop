@@ -11,6 +11,7 @@ namespace BAL.Interfaces
         List<ProductModel> GetAllProducts();
         //List<BatchOfProductModel> GetAllBatch();
         List<OrderModel> GetAllOrders();
+        List<StatusModel> GetAllStatuses();
         List<CategoryModel> GetAllCategories();
         List<OrderLineModel> GetAllOrderLines();
         ProductModel GetProduct(int productId);

@@ -62,7 +62,7 @@ namespace BBL.Servises
 
             return orderModels;
         }
-        public BuyerModel GetCutomerProfile(int BuyerId)
+        public BuyerModel GetBuyerProfile(int BuyerId)
         {
             var Buyer = dataBase.Buyers.GetItem(BuyerId);
             decimal? sum = 0;
@@ -73,20 +73,31 @@ namespace BBL.Servises
                 sum += i.Sum;
             }
 
-            //var status = dataBase.BuyerStatuses.GetItem(Buyer.Buyer_Status_Id);
-            //double progress = 0;
-            //if (sum != 0 & status.Sum != 0)
-            //{
-            //    progress = Convert.ToDouble(sum / status.Sum);
-            //}
 
             return new BuyerModel
             {
                 Name = Buyer.Name,
-                //Progress = progress * 100,
+                Address = Buyer.Address,
                 Sum = sum,
-                //Buyer_Status_Id = Buyer.Buyer_Status_Id
+                Email = Buyer.Email
             };
+        }
+        public List<decimal> GetStats(int customerId, string year)
+        {
+            var orders = dataBase.Orders.GetList().Where(i => ((DateTime)i.Date).Year.ToString() == year && customerId == i.UserId).ToList();
+
+            List<decimal> months = new List<decimal>();
+            for (int i = 0; i < 12; i++)
+            {
+                decimal sum = 0;
+                foreach (var j in orders)
+                {
+                    if (((DateTime)j.Date).Month.ToString() == (i + 1).ToString()) sum += (decimal)j.Sum;
+                }
+                months.Add(sum);
+            }
+
+            return months;
         }
     }
 }

@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Дизайн.View.MyProfileUserControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Дизайн.View"
+        mc:Ignorable="d"
+        d:DesignHeight="620" 
+        d:DesignWidth="965">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="20*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Имя-->
+        <Grid Grid.Row="1" Grid.Column="1" Margin="20">
+            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="20" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="#013220" TextAlignment="Center" FontSize="30" TextWrapping="Wrap"/>
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="0"/>
+            </Grid.Effect>
+        </Grid>
+        <!--Email-->
+        <Grid Grid.Row="2" Grid.Column="1" Margin="10">
+            <TextBlock Text="{Binding Email}" VerticalAlignment="Center" Margin="20" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"  Foreground="#013220" FontSize="30" TextWrapping="Wrap"/>
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="0"/>
+            </Grid.Effect>
+        </Grid>
+        <!--Адрес-->
+        <Grid Grid.Row="3" Grid.Column="1" Margin="10">
+            <TextBlock Text="{Binding Address}" VerticalAlignment="Center" Margin="20" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"  Foreground="#013220" FontSize="30" TextWrapping="Wrap"/>
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="0"/>
+            </Grid.Effect>
+        </Grid>
+        <Grid Grid.Column="0" Grid.RowSpan="5" Background="#013220" ></Grid>
+        <Grid Grid.Column="2" Grid.RowSpan="5" Background="#013220" ></Grid>
+    </Grid>
+</UserControl>

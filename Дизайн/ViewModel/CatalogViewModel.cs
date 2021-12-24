@@ -240,7 +240,7 @@ namespace Дизайн.ViewModel
         private string _Availability;
 
         #region Добавить в корзину
-        public bool? CanAddToCart
+        public bool CanAddToCart
         {
             get
             {
@@ -252,7 +252,7 @@ namespace Дизайн.ViewModel
                 NotifyPropertyChanged("CanAddToCart");
             }
         }
-        private bool? _CanAddToCart;
+        private bool _CanAddToCart;
 
 
 

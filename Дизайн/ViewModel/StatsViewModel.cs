@@ -48,7 +48,7 @@ namespace Дизайн.ViewModel
         private void Update(object args)
         {
             Statistic.Clear();
-            var mon = _profileService.(_userId, Years[Year]);
+            var mon = _profileService.GetStats(_userId, Years[Year]);
             if (mon.Max() > 100)
             {
                 Max = mon.Max();

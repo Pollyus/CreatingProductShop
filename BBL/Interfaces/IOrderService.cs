@@ -10,9 +10,7 @@ namespace BAL.Interfaces
 {
     public interface IOrderService
     {
-        //Создает или изменяет существующий заказ
-      // bool MakeOrder(OrderModel orderModel);
-        bool MakeOrder(OrderModel orderModel, List<int> items);
+        
 
         List<CartModel> GetShoppingCart(int customerId);
     }

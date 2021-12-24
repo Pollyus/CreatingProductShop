@@ -147,18 +147,28 @@
                         </Grid.Effect>
                     </Grid>
                     <!--Описание-->
+
                     <Grid Grid.Row="1" Grid.Column="1" Margin="9.6,12,9.4,10.2" Background="White">
-                        <ScrollViewer Margin="100,45,10,10" VerticalScrollBarVisibility="Auto">
-                                <TextBlock Margin="10,45,10,10" Text="{Binding Path = Description}"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Height="210"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70*" ></RowDefinition>
+                            <RowDefinition Height="200*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Margin="10,10,10,10" VerticalScrollBarVisibility="Auto"  >
+                            <TextBlock Text="{Binding Path = Description}"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Height="210" Width="458"/>
                         </ScrollViewer>
                         <TextBlock  HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" TextWrapping="Wrap" Text="Дата изготовления: " VerticalAlignment="Top" Width="236"/>
-                            <TextBlock HorizontalAlignment="Left" Height="50" Margin="11,44,0,0" TextWrapping="Wrap" Text="{Binding Path = DateProduction}" VerticalAlignment="Top" Width="235"/>
-                        <!--<TextBlock HorizontalAlignment="Left" Height="30" Margin="335,10,0,0" TextWrapping="Wrap" Text="Годен до: " VerticalAlignment="Top" Width="216"/>-->
-                            <TextBlock HorizontalAlignment="Left" Height="50" Margin="316,44,0,0" TextWrapping="Wrap" Text="{Binding Path = DateExpiration}" VerticalAlignment="Top" Width="235"/>
+                        <TextBlock HorizontalAlignment="Left" Height="31" Margin="11,40,0,0" TextWrapping="Wrap" Text="{Binding DateProduction}" VerticalAlignment="Top" Width="235"/>
+                        <TextBlock HorizontalAlignment="Left" Height="30" Margin="35.2,10,0,0" TextWrapping="Wrap" Text="Годен до: " VerticalAlignment="Top" Width="216" Grid.Column="1"/>
+                        <TextBlock HorizontalAlignment="Left" Height="31" Margin="316,40,0,0" TextWrapping="Wrap" Text="{Binding Path = DateExpiration}" VerticalAlignment="Top" Width="235"/>
                         <Grid.Effect>
                             <DropShadowEffect ShadowDepth="0"/>
                         </Grid.Effect>
                     </Grid>
+
                     <!--Заказать-->
                     <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="10,7.8,10.2,29" Background="White">
                         <Grid.ColumnDefinitions>
@@ -170,11 +180,11 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                           
-                        <TextBlock Margin="5,0,0,0" Grid.Row="2" Text="{Binding Availability}" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Height="32"/>
 
-                        <TextBlock Margin="0,0,5,0" Grid.Row="0" Grid.Column="1" Text="{Binding Price}" FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Black" Height="38"/>
-                        <TextBlock Margin="0,0,5,0" Grid.Row="1" Grid.Column="1" Text="{Binding Sale}" FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Black" Height="38"/>
+                        <TextBlock Margin="0" Grid.Row="2" Text="{Binding Availability}" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Height="32"/>
+
+                        <TextBlock HorizontalAlignment="Left" Margin="0" Grid.Row="0" Text="{Binding Price}" FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center"  Foreground="Black" Height="38" RenderTransformOrigin="0.5,0.5" Width="428" Grid.Column="1"/>
+                        <TextBlock Grid.Column="1"  Margin="0" Grid.Row="1" Text="{Binding Sale}" FontSize="22" Style="{StaticResource MaterialDesignBody1TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Black" Height="38" RenderTransformOrigin="0.5,0.5" Width="443" Grid.ColumnSpan="2"/>
 
                         <Grid Grid.Row="2" Grid.Column="1" Margin="5,0.4,0.2,0">
                             <Grid.ColumnDefinitions>
@@ -193,7 +203,7 @@
                     </Grid>
                 </Grid>
 
-                </Grid>
+            </Grid>
             </Grid>
         </Grid>
 

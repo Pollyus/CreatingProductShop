@@ -31,7 +31,9 @@
                             <TextBlock Text="Личный кабинет" FontSize="23"  HorizontalAlignment="Center" Foreground="White" />
                         </StackPanel>
                     </TabItem.Header>
-                    <Grid Background="#FFE5E5E5"/>
+                    <view:MyProfileUserControl DataContext="{Binding ProfileVM}" Margin="0"/>
+                    
+                   
                 </TabItem>
                 <TabItem Width="335" Height="130" >
                     <TabItem.Header >
@@ -60,8 +62,9 @@
                             <TextBlock Foreground="White" FontSize="23" Text="Отчеты" HorizontalAlignment="Center" />
                         </StackPanel>
                     </TabItem.Header>
-                    <!--<view:StatisticUserControl DataContext="{Binding StatsVM}"/>-->
-                    <Grid Background="#FFE5E5E5"/>
+                    
+                    
+                    <view:StatisticUserControl DataContext="{Binding StatsVM}"/>
                 </TabItem>
             </TabControl>
 

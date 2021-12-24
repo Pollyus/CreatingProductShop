@@ -25,7 +25,7 @@ namespace BAL.Models
         public DateTime DateExpiration { get; set; }
         public int? Amount{ get; set; }
         public string ViewPrice { get; set; }
-        public bool? Avalibility { get; set; }
+        public bool Avalibility { get; set; }
 
         public int? BrandId { get; set; }
         public ProductModel() { }

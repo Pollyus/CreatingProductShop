@@ -13,6 +13,7 @@ using View.Util;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using View.ViewModel;
+using Дизайн.ViewModel;
 
 namespace Mustorg.ViewModel
 {
@@ -34,9 +35,16 @@ namespace Mustorg.ViewModel
             _profileService = profileService;
             _userId = userId;
 
+            ProfileVM = new MyProfileViewModel(dbCrud, categoryService, productCatalogService, dialogService, profileService, userId);
+            OrdersVM = new MyOrdersViewModel(dbCrud, categoryService, productCatalogService, dialogService, profileService, userId);
+            StatsVM = new StatsViewModel(dbCrud, categoryService, productCatalogService, dialogService, profileService, userId);
             SalesVM = new SalesViewModel(dbCrud, categoryService, productCatalogService, dialogService, profileService, userId);
         }
-
+        public MyProfileViewModel ProfileVM { get; set; }
+       
+        public MyOrdersViewModel OrdersVM { get; set; }
+        public StatsViewModel StatsVM { get; set; }
+        
         public SalesViewModel SalesVM { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

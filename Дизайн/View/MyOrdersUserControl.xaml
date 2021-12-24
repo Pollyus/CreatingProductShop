@@ -1,0 +1,177 @@
+﻿<UserControl x:Class="Дизайн.View.MyOrdersUserControl"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Дизайн.View"
+        mc:Ignorable="d"
+        d:DesignHeight="620" 
+        d:DesignWidth="965">
+
+
+    <UserControl.Resources>
+    
+        <DataTemplate x:Key="InternalTemplate">
+            <Grid Background="White" Height="624" Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel x:Name="MyCartImage" Margin="10,10,10,10" Grid.RowSpan="3">
+                    <Image Source="{Binding Path=Photo}" Width="110" Height="110"/>
+                </StackPanel>
+                <!--Название-->
+                <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="NoWrap" Width="280" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=Name}" Foreground="Black" />
+                <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="12" Margin="0,0,10,0" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=ViewAmount}" Foreground="Black" />
+                <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" FontSize="12" Margin="0,0,10,0" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=ViewPrice}" Foreground="Black" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ListTemplate">
+            <Grid Width="550" Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,10,0" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=ViewSum}" Foreground="Black" />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Margin="0,0,10,0" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=ViewDate}" Foreground="Black" />
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Margin="10,0,0,0" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=OrderStatus}" Foreground="Black" />
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Margin="10,0,0,0" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=PickPoint}" Foreground="Black" />
+
+                <Expander Grid.Row="2" HorizontalAlignment="Stretch" Header="Товары в заказе: " Foreground="White" Background="#A80051" FontSize="14" FontWeight="DemiBold">
+                    <ScrollViewer Grid.Row="1" Background="#FFF3F3F3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0" >
+                        <ListView  materialDesign:ListBoxItemAssist.ShowSelection="False"  x:Name="ProdList" ItemsSource="{Binding Path=OrderLines}" ItemTemplate="{StaticResource InternalTemplate}" HorizontalContentAlignment="Center">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Margin" Value="0,5,0,5"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="IsSelected" Value="True"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </ScrollViewer>
+                </Expander>
+                <Rectangle Grid.Row="2" HorizontalAlignment="Stretch" Fill="LightGray" Height="2" VerticalAlignment="Top" />
+
+                <Grid.Effect>
+                    <DropShadowEffect ShadowDepth="0"/>
+                </Grid.Effect>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="363*"></ColumnDefinition>
+            <ColumnDefinition Width="119*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--Доставлено-->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="#FFF3F3F3">
+            <ListView HorizontalContentAlignment="Center" ItemsSource="{Binding Orders}" ItemTemplate="{StaticResource ListTemplate}" materialDesign:ListBoxItemAssist.ShowSelection="False">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Margin" Value="0,5,0,5"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="IsSelected" Value="True"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </ScrollViewer>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!--Статус-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Выберете статус заказа" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Width="200"/>
+
+                    <ComboBox SelectedIndex="{Binding SelectedStatus}" Grid.Row="1"  ItemsSource="{Binding Status}" FontSize="14" materialDesign:HintAssist.Hint="Статус заказа" BorderBrush="#FF160025" Foreground="Black" BorderThickness="0,0,0,2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Grid>
+
+                <!--Период-->
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Выберите период" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Width="200"/>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="До" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Gray" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Width="200"/>
+                        <DatePicker DisplayDateEnd="01.01.2023" DisplayDateStart="01.01.2017" SelectedDate="{Binding DateEnd}" Text="Конечная дата" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" materialDesign:CalendarAssist.HeaderBackground="#FF160025" BorderBrush="#FF160025" BorderThickness="0,0,0,2"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="От" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Gray" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Width="200"/>
+                        <DatePicker DisplayDateEnd="01.01.2023" DisplayDateStart="01.01.2017" SelectedDate="{Binding DateStart}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" materialDesign:CalendarAssist.HeaderBackground="#FF160025" BorderBrush="#FF160025" BorderThickness="0,0,0,2"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Button Command="{Binding Sort}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Показать резульаты" Foreground="White" BorderBrush="#013220" Background="#013220"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Заказы" FontWeight="DemiBold" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" />
+        </Grid>
+
+        <TextBlock Grid.Row="1" Visibility="{Binding IsVisible}" Text="Пока ничего нет" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Gray" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Rectangle Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch" Fill="LightGray" Width="2" HorizontalAlignment="Left" />
+    </Grid>
+</UserControl>

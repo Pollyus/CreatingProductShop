@@ -15,6 +15,7 @@ namespace BBL.Interfaces
         bool CheckPassword(string login, string password);
         int GetUserId(string login);
         List<OrderModel> GetBuyerOrders(int customerId, int statusId, DateTime dateStart, DateTime dateEnd);
-        BuyerModel GetCutomerProfile(int customerId);
+        BuyerModel GetBuyerProfile(int customerId);
+        List<decimal> GetStats(int customerId, string year);
     }
 }

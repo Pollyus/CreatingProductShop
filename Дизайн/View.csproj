@@ -129,6 +129,8 @@
     <Compile Include="ViewModel\CartViewModel.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\MyOrderViewModel.cs" />
+    <Compile Include="ViewModel\MyProfileViewModel.cs" />
     <Compile Include="ViewModel\ProductWindow.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
@@ -149,6 +151,12 @@
     <Compile Include="Util\DialogService.cs" />
     <Compile Include="Util\IDialogService.cs" />
     <Compile Include="Util\NinjectRegistrations.cs" />
+    <Compile Include="View\MyOrdersUserControl.xaml.cs">
+      <DependentUpon>MyOrdersUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyProfileUserControl.xaml.cs">
+      <DependentUpon>MyProfileUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ProfileControl.xaml.cs">
       <DependentUpon>ProfileControl.xaml</DependentUpon>
     </Compile>
@@ -186,6 +194,14 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MyOrdersUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MyProfileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ProfileControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
