@@ -21,7 +21,7 @@ namespace BBL.Servises
 
         public List<ProductModel> GetProductsByCategory(string category)
         {
-            return dataBase.Services.GetProductsByCategory(category).Select(i => new ProductModel { Id = i.Id, Photo = i.Photo, Name = i.Name, Cost= i.Cost, Sale = i.Sale }).ToList(); //Sale= i.Sale
+            return dataBase.Services.GetProductsByCategory(category).Select(i => new ProductModel { Id = i.Id, Photo = i.Photo, Name = i.Name, Cost= i.Cost, Sale = i.Sale }).ToList(); 
         }
     }
 }

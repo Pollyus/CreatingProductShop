@@ -70,7 +70,7 @@ namespace BAL
             bu.Name = buyer.Name;
             bu.Password = buyer.Password;
             bu.Email = buyer.Email;
-
+            bu.Address = buyer.Address;
             db.Buyers.Create(bu);
             Save();
 

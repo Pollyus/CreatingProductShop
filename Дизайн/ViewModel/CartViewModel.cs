@@ -26,9 +26,13 @@ namespace Дизайн.ViewModel
         private readonly IDialogService _dialogService;
         private readonly IOrderService _orderService;
         private readonly IProfileService _profileService;
+        private readonly IFileService _fileService;
         private readonly int _userId;
 
-        public CartViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IDialogService dialogService, IOrderService orderService, IProfileService profileService, int userId)
+        public delegate void DialogHandler(int id);
+        public event DialogHandler OrderCreated;
+
+        public CartViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IDialogService dialogService, IOrderService orderService, IProfileService profileService, int userId, IFileService fileService)
         {
             _crud = dbCrud;
             _categoryService = categoryService;
@@ -36,6 +40,7 @@ namespace Дизайн.ViewModel
             _dialogService = dialogService;
             _orderService = orderService;
             _profileService = profileService;
+            _fileService = fileService;
             _userId = userId;
 
             IsVisible = "Visible";
@@ -43,7 +48,9 @@ namespace Дизайн.ViewModel
             OrderVisibility = "Hidden";
             CodeSale = $"По данной скидке вы сэкономили: 0 руб.";
             UserAddress= "";
-            
+            MessageVisibility = "Hidden";
+            CheckVisibility = "Hidden";
+
             UpdateOrderPage();
             
             Messenger.Default.Register<GenericMessage<CartModel>>(this, Update);
@@ -98,6 +105,7 @@ namespace Дизайн.ViewModel
         private string _Total;
         private decimal? total;
 
+        
         private void UpdateOrderPage()
         {
             total = 0;
@@ -219,13 +227,10 @@ namespace Дизайн.ViewModel
         private ICommand _endMakeOrder;
 
         private void CloseMakeOrder(object args)
-        {
+        { 
+            
             OrderVisibility = "Hidden";
-            _crud.CreateBuyer(new BuyerModel
-            {
-                Address = this.UserAddress
-
-            });
+            
         }
         public ICommand MakeOrder
         {
@@ -254,6 +259,35 @@ namespace Дизайн.ViewModel
         private ICommand _endOrder;
         private void MakeOrderCheck(object args)
         {
+            try
+            {
+                if (_orderService.MakeOrder(_userId, Sale[SelectedSale].Id, (decimal)total - (decimal)Sale[SelectedSale].Offer, Cart) != 0)
+                {
+                   
+                    Message = "Заказ выполнен";
+                    MessageVisibility = "Visible";
+                    CheckVisibility = "Visible";
+                    OrderCreated?.Invoke(0);
+                    //_crud.CreateBuyer(new BuyerModel
+                    //{
+                    //    Id = this._userId,
+                        
+                    //    Address = this.UserAddress
+
+                    //}); ;
+                    //UserAddress = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = "Ошибка";
+                MessageVisibility = "Visible";
+                _fileService.PrintExceptions(ex);
+            }
+            finally
+            {
+                UpdateOrderPage();
+            }
 
         }
 
@@ -373,8 +407,85 @@ namespace Дизайн.ViewModel
                 NotifyPropertyChanged("UserAddress");
             }
         }
-       
-        
+        #region Сообщение
+        public ICommand Back
+        {
+            get
+            {
+                if (_back == null)
+                    _back = new RelayCommand(args => CloseMessage(args));
+                return _back;
+            }
+        }
+        private ICommand _back;
+        private void CloseMessage(object args)
+        {
+            OrderVisibility = "Hidden";
+            MessageVisibility = "Hidden";
+            CheckVisibility = "Hidden";
+        }
+
+        public string Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                _Message = value;
+                NotifyPropertyChanged("Message");
+            }
+        }
+        private string _Message;
+
+        public string MessageVisibility
+        {
+            get
+            {
+                return _MessageVisibility;
+            }
+            set
+            {
+                _MessageVisibility = value;
+                NotifyPropertyChanged("MessageVisibility");
+            }
+        }
+        private string _MessageVisibility;
+
+        private ICommand _PDF;
+        public ICommand PDF
+        {
+            get
+            {
+                if (_PDF == null)
+                    _PDF = new RelayCommand(args => ExportToPDF(args));
+                return _PDF;
+            }
+        }
+        private void ExportToPDF(object args)
+        {
+            var orders = _crud.GetAllOrders();
+            int key = orders[orders.Count - 1].Id;
+            _fileService.PrintCheque(key);
+        }
+
+        private string _CheckVisibility;
+        public string CheckVisibility
+        {
+            get
+            {
+                return _CheckVisibility;
+            }
+            set
+            {
+                _CheckVisibility = value;
+                NotifyPropertyChanged("CheckVisibility");
+            }
+
+        }
+
     }
+    #endregion
 
 }

@@ -39,9 +39,18 @@ namespace View.ViewModel
                 i.ViewText = $"Скидка {i.Offer:0.#} руб. \nПри покупке от {i.Condition:0.#} руб. ";
                 Sales.Add(i);
             }
-
+            Update(0);
         }
-
+        public void Update(int nullable)
+        {
+            Sales = new ObservableCollection<SaleModel>();
+            var result = _profileService.GetSale(_userId, 1000000);
+            foreach (var i in result)
+            {
+                i.ViewText = $"Купон на скидку {i.Offer:0.#} руб. \nПри покупке от {i.Condition:0.#} руб. ";
+                Sales.Add(i);
+            }
+        }
         public ObservableCollection<SaleModel> Sales
         {
             get

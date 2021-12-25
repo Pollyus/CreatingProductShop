@@ -27,10 +27,10 @@ namespace Дизайн.ViewModel
             _profileService = profileService;
             _userId = userId;
 
-            Update();
+            Update(0);
         }
 
-        private void Update()
+        public void Update(int nullable)
         {
             var user = _profileService.GetBuyerProfile(_userId);
             Name = user.Name;

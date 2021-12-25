@@ -13,9 +13,9 @@ namespace Дизайн.Util
 {
     class DialogService : IDialogService
     {
-        public void OpenCatalogWindow(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IDialogService dialogService, IProfileService profileService, int userId)
+        public void OpenCatalogWindow(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IDialogService dialogService, IProfileService profileService, int userId, IFileService fileService)
         {
-            MainWindow mainWindow = new MainWindow(dbCrud, categoryService, productCatalogService, orderService, profileService, userId);
+            MainWindow mainWindow = new MainWindow(dbCrud, categoryService, productCatalogService, orderService, profileService, userId, fileService);
             mainWindow.Show();
         }
     }

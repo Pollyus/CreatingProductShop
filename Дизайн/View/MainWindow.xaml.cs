@@ -25,10 +25,10 @@ namespace Дизайн.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(IDbCrud crudService, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IProfileService profileService, int userId)
+        public MainWindow(IDbCrud crudService, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IProfileService profileService, int userId, IFileService fileService)
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(crudService, categoryService, productCatalogService, orderService, new DialogService(), profileService, userId);
+            DataContext = new MainWindowViewModel(crudService, categoryService, productCatalogService, orderService, new DialogService(), profileService, userId, fileService);
         }
 
         private void CatalogControlWindow_Loaded(object sender, RoutedEventArgs e)

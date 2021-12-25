@@ -14,7 +14,7 @@ namespace DAL.Interfaces
         IRepository<Order> Orders { get; }
         IRepository<Category> Categories { get; }
         IRepository<CategoryType> CategoryTypes { get; }
-        IReportsRepository Reports { get; }
+       
         IRepository<OrderLines> OrderLines { get; }
         //ICatalogFiltersRepository CatalogFilters { get; }
         IServiceRepository Services { get; }

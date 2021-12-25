@@ -22,9 +22,7 @@ namespace DAL.Entities
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        public virtual DbSet<TypeOfPayment> TypeOfPayments { get; set; }
         public virtual DbSet<User_Sale> User_Sales { get; set; }
-        public virtual DbSet<Busket> Busket { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -55,11 +53,6 @@ namespace DAL.Entities
             modelBuilder.Entity<Buyer>()
                 .Property(e => e.Email)
                 .IsFixedLength();
-
-            modelBuilder.Entity<Buyer>()
-                .HasMany(e => e.Busket)
-                .WithRequired(e => e.Buyer)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Buyer>()
                 .HasMany(e => e.Order)
@@ -97,9 +90,8 @@ namespace DAL.Entities
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Order>()
-                .HasMany(e => e.OrderLines)
-                .WithRequired(e => e.Order)
-                .WillCascadeOnDelete(false);
+                .Property(e => e.Sale)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<OrderLines>()
                 .Property(e => e.Price)
@@ -143,11 +135,6 @@ namespace DAL.Entities
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.Busket)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Sale>()
                 .Property(e => e.Name)
                 .IsFixedLength();
@@ -157,25 +144,16 @@ namespace DAL.Entities
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Sale>()
+                .Property(e => e.GiveAwayCondition)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Sale>()
                 .Property(e => e.Condition)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Sale>()
                 .Property(e => e.Background)
                 .IsFixedLength();
-
-            modelBuilder.Entity<ShoppingCart>()
-                .Property(e => e.Amount)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<TypeOfPayment>()
-                .Property(e => e.Name)
-                .IsFixedLength();
-
-            modelBuilder.Entity<TypeOfPayment>()
-                .HasMany(e => e.Order)
-                .WithOptional(e => e.TypeOfPayment)
-                .HasForeignKey(e => e.TypeId);
         }
     }
 }

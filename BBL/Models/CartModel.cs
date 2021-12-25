@@ -23,7 +23,7 @@ namespace BBL.Models
         public int BuyerId { get; set; }
         public int ProductId { get; set; }
         public int BatchId { get; set; }
-        public decimal Amount { get; set; }
+        public int Amount { get; set; }
         public string ProductName { get; set; }
         public string ViewPrice { get; set; }
         public string ViewSale { get; set; }

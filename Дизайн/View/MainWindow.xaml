@@ -42,16 +42,16 @@
                     Background="#ADDFAD"  HorizontalAlignment="Stretch" TabStripPlacement="Top"
                      Margin="0" VerticalAlignment="Stretch" Grid.RowSpan="2"
                      materialDesign:ColorZoneAssist.Mode="Standard">
-            <TabItem Width="180" Height="80">
+            <!--<TabItem Width="180" Height="80">
                 <TabItem.Header>
                     <StackPanel Height="auto" Width="auto">
                         <materialDesign:PackIcon Kind="Home" Width="50" Height="50" HorizontalAlignment="Center"  Foreground="#013220" />
                         <TextBlock Text="Главная" HorizontalAlignment="Center" FontSize="23" Foreground="#013220" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--<view:CatalogControlWindow Margin="-335,0,0,0" DataContext="{Binding ProfileVM}" Loaded="CatalogControlWindow_Loaded"/>-->
+                --><!--<view:CatalogControlWindow Margin="-335,0,0,0" DataContext="{Binding ProfileVM}" Loaded="CatalogControlWindow_Loaded"/>--><!--
                 <view:HomeUserControl Margin="-335,0,0,0"/>
-            </TabItem>
+            </TabItem>-->
             <TabItem  Width="180" Height="80">
                 <TabItem.Header>
                     <StackPanel Height="auto" Width="auto">

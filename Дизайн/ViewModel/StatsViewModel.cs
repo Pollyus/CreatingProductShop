@@ -42,10 +42,10 @@ namespace Дизайн.ViewModel
             Years.Add("2021");
             Years.Add("2022");
 
-            Update(null);
+            Update(0);
         }
 
-        private void Update(object args)
+        public void Update(int nullable)
         {
             Statistic.Clear();
             var mon = _profileService.GetStats(_userId, Years[Year]);
@@ -69,9 +69,13 @@ namespace Дизайн.ViewModel
             get
             {
                 if (_changed == null)
-                    _changed = new RelayCommand(args => Update(args));
+                    _changed = new RelayCommand(args => UpdateStat(0));
                 return _changed;
             }
+        }
+        private void UpdateStat(object args)
+        {
+            Update(0);
         }
 
         private int _Year;

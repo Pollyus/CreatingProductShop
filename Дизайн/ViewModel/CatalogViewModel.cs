@@ -110,8 +110,8 @@ namespace Дизайн.ViewModel
                 Photo = Product[0].Photo;
                 Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
                 CanAddToCart = Product[0].Avalibility;
-                DateProduction = $"Дата производства \n: {Product[0].DateProduction}";
-                DateExpiration = $"Годен до \n: {Product[0].DateExpiration}";
+                DateProduction = $"Дата производства \n: {Product[0].DateProduction.Value}";
+                DateExpiration = $"Годен до \n: {Product[0].DateExpiration.Value}";
 
                 if (Product[0].Sale != null)
                 {
@@ -300,6 +300,68 @@ namespace Дизайн.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public void Update(int productId)
+        {
+            if (productId != -1 && productId != 0)
+            {
+                IsVisible = "Visible";
+                this.productId = productId;
+
+                var Product = _crud.GetAllProducts().Where(i => i.Id == this.productId).ToList();
+                Description = "Характеристики: \n" + Product[0].Description;
+                Name = Product[0].Name;
+                Photo = Product[0].Photo;
+                Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
+                CanAddToCart = Product[0].Avalibility;
+
+                if (Product[0].Sale != null)
+                {
+                    Sale = $"Скидка: {Product[0].Sale:0.#} руб.";
+                }
+                else
+                {
+                    Sale = "";
+                }
+
+                if (Product[0].Avalibility == true)
+                {
+                    Availability = " Есть в наличии";
+                }
+                else
+                {
+                    Availability = " Нет в наличии";
+                }
+            }
+            else if (this.productId != -1 && productId == 0)
+            {
+                var Product = _crud.GetAllProducts().Where(i => i.Id == this.productId).ToList();
+                CanAddToCart = Product[0].Avalibility;
+
+                if (Product[0].Avalibility == true)
+                {
+                    Availability = " Есть в наличии";
+                }
+                else
+                {
+                    Availability = " Нет в наличии";
+                }
+            }
+        }
+        private string _IsVisible;
+        public string IsVisible
+        {
+            get
+            {
+                return _IsVisible;
+            }
+            set
+            {
+                _IsVisible = value;
+                NotifyPropertyChanged("IsVisible");
+            }
+        }
+
     }
 }
 

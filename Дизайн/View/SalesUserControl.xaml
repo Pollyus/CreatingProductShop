@@ -11,14 +11,10 @@
         d:DesignHeight="620" 
         d:DesignWidth="965">
     <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="363*"></ColumnDefinition>
-            <ColumnDefinition Width="119*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-        <Grid Background="#FFF3F3F3">
-            <ScrollViewer Background="#FFF3F3F3" Margin="0">
-                <ListView x:Name="listView" ItemsSource="{Binding Sales}" Width="716" Height="Auto" Margin="0,0,0,0">
+       
+        <Grid Background ="AliceBlue">
+            <ScrollViewer  Grid.Column="0" HorizontalAlignment="Left" Width="945" Height="Auto" Margin="10,10,0,0" VerticalAlignment="Top" >
+                <ListView x:Name="listView"  ItemsSource="{Binding Sales}" HorizontalAlignment="Left" Height="590" VerticalAlignment="Top" Width="935">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" MaxWidth="{Binding ElementName=listView, Path=ActualWidth}"/>
@@ -26,31 +22,33 @@
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="300" Height="300" >
-                                <StackPanel.Effect>
-                                    <DropShadowEffect ShadowDepth="0"/>
-                                </StackPanel.Effect>
-                                <Grid Height="300" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="250"></RowDefinition>
-                                        <RowDefinition Height="50"></RowDefinition>
-                                    </Grid.RowDefinitions>
+                            <StackPanel HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="300">
+                        <StackPanel.Effect>
+                            <DropShadowEffect ShadowDepth="0"/>
+                        </StackPanel.Effect>
+                        <Grid HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="300">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="250"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="White" Grid.RowSpan="2">
+                                <TextBlock Foreground="Black" FontSize="14" FontWeight="DemiBold" Text="{Binding Path=ViewText}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" Margin="5,0,10,5"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </Grid>
+                            <Grid Grid.Row="1" Background="{Binding Path=Background}" >
+                                <TextBlock Foreground="White" FontSize="17" FontWeight="DemiBold" Text="{Binding Path=SaleName}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" Margin="5,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                            <Image Opacity="0.05" Grid.Row="0" Source="/Assets/Sale.png" Stretch="Uniform" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10"/>
+                        </Grid>
 
-                                    <Grid Grid.Row="0" Background="White" Grid.RowSpan="2">
-                                        <TextBlock Foreground="Black" FontSize="14" FontWeight="DemiBold" Text="{Binding Path=ViewText}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" Margin="5,0,10,5"  VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                    </Grid>
-                                    <Grid Grid.Row="1" Background="{Binding Path=Background}" >
-                                        <TextBlock Foreground="White" FontSize="17" FontWeight="DemiBold" Text="{Binding Path=SaleName}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" Margin="5,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Grid>
-                                    <Image Opacity="0.05" Grid.Row="0" Source="/Assets/Sale.png" Stretch="Uniform" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10"/>
-                                </Grid>
-                            </StackPanel>
+                    </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
             </ScrollViewer>
+
         </Grid>
-        <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Ваши Купоны"  FontWeight="DemiBold" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" />
-        <Rectangle Grid.Column="1" VerticalAlignment="Stretch" Fill="LightGray" Width="2" HorizontalAlignment="Left" />
+
+        
     </Grid>
 </UserControl>

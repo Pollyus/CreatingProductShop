@@ -22,8 +22,9 @@ namespace Mustorg.ViewModel
         private readonly IDialogService _dialogService;
         private readonly IOrderService _orderService;
         private readonly IProfileService _profileService;
+        private readonly IFileService _fileService;
 
-        public MainWindowViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IDialogService dialogService, IProfileService profileService, int userId)
+        public MainWindowViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IDialogService dialogService, IProfileService profileService, int userId, IFileService fileService)
         {
             _crud = dbCrud;
             _categoryService = categoryService;
@@ -31,15 +32,27 @@ namespace Mustorg.ViewModel
             _dialogService = dialogService;
             _orderService = orderService;
             _profileService = profileService;
+            _fileService = fileService;
+
+            //fileService.PrintCheque(1070);
 
             CatalogVM = new CatalogViewModel(dbCrud, categoryService, productCatalogService, dialogService, userId);
-            CartVM = new CartViewModel(dbCrud, categoryService, productCatalogService, dialogService, orderService, profileService, userId);
+            CartVM = new CartViewModel(dbCrud, categoryService, productCatalogService, dialogService, orderService, profileService, userId, fileService);
             ProfileVM = new ProfileViewModel(dbCrud, categoryService, productCatalogService, dialogService, profileService, userId);
+
+            CartVM.OrderCreated += CatalogVM.Update;
+            CartVM.OrderCreated += ProfileVM.OrdersVM.Update;
+            CartVM.OrderCreated += ProfileVM.ProfileVM.Update;
+            CartVM.OrderCreated += ProfileVM.StatsVM.Update;
+            CartVM.OrderCreated += ProfileVM.SalesVM.Update;
+
         }
 
         public ProfileViewModel ProfileVM { get; set; }
         public CatalogViewModel CatalogVM { get; set; }
         public CartViewModel CartVM { get; set; }
+
+        
 
 
         public event PropertyChangedEventHandler PropertyChanged;

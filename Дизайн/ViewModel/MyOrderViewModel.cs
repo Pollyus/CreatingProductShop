@@ -47,9 +47,9 @@ namespace Mustorg.ViewModel
             }
 
             Orders = new ObservableCollection<OrderModel>();
-            Update();
+            Update(0);
         }
-        private void Update()
+        public void Update(int nullable)
         {
             Orders.Clear();
             var orders = _profileService.GetBuyerOrders(_userId, SelectedStatus, DateStart, DateEnd);
@@ -84,7 +84,7 @@ namespace Mustorg.ViewModel
 
         private void SortOrders(object args)
         {
-            Update();
+            Update(0);
         }
 
         private int _SelectedStatus;

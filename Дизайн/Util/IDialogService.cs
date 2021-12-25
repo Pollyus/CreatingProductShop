@@ -12,6 +12,6 @@ namespace View.Util
 {
     public interface IDialogService
     {
-        void OpenCatalogWindow(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IDialogService dialogService, IProfileService profileService, int UserId);
+        void OpenCatalogWindow(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IDialogService dialogService, IProfileService profileService, int UserId, IFileService fileService);
     }
 }

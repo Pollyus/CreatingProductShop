@@ -17,6 +17,7 @@ namespace View.Util
             Bind<ICatalogService>().To<ProductCatalogService>();
             Bind<IOrderService>().To<OrderService>();
             Bind<IProfileService>().To<ProfileService>();
+            Bind<IFileService>().To<FileService>();
         }
     }
 }

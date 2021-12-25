@@ -27,7 +27,7 @@
 
                     <ScrollViewer Grid.Row="0" Grid.Column="1" Background="#e3fae3" Margin="0" VerticalScrollBarVisibility="Auto">
                         <ListView x:Name="listView" ItemsSource="{Binding Cart}" Margin="0,0,0,0" HorizontalContentAlignment="Center">
-                        <ListView.ItemContainerStyle>
+                            <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="Background" Value="Transparent" />
                                     <Setter Property="Template">
@@ -46,56 +46,56 @@
                                 </Style>
                             </ListView.ItemContainerStyle>
                             <ListView.ItemTemplate>
-                        <DataTemplate>
-                        <Grid Height="200" Background="White" Width="600">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50*"/>
-                                <RowDefinition Height="50*"/>
-                                <RowDefinition Height="50*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.Effect>
-                                <DropShadowEffect ShadowDepth="0"/>
-                            </Grid.Effect>
-                            <StackPanel x:Name="MyCartImage" Margin="10,10,10,10" Grid.RowSpan="3">
-                                <Image Source="{Binding Photo}" Width="180" Height="180"/>
-                            </StackPanel>
-                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding ProductName}" Foreground="Black" Margin="0,3,0,2.2" RenderTransformOrigin="0.5,0.5" Width="400" Height="62" Grid.Column="1"  />
-                            <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding ViewTotal}" Foreground="Black" />
-                            <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding SelectedIndex, ElementName=listView}"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#013220" Background="#013220">
-                                <materialDesign:PackIcon Kind="DeleteCircle" Width="24" Height="24" Foreground="White" />
-                            </Button>
-                            <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="30,0,80,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="20*"/>
-                                    <ColumnDefinition Width="15*"/>
-                                    <ColumnDefinition Width="20*"/>
-                                </Grid.ColumnDefinitions>
+                                <DataTemplate>
+                                    <Grid Height="200" Background="White" Width="600">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50*"/>
+                                            <RowDefinition Height="50*"/>
+                                            <RowDefinition Height="50*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.Effect>
+                                            <DropShadowEffect ShadowDepth="0"/>
+                                        </Grid.Effect>
+                                        <StackPanel x:Name="MyCartImage" Margin="10,10,10,10" Grid.RowSpan="3">
+                                            <Image Source="{Binding Photo}" Width="180" Height="180"/>
+                                        </StackPanel>
+                                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding ProductName}" Foreground="Black" Margin="0,3,0,2.2" RenderTransformOrigin="0.5,0.5" Width="400" Height="62" Grid.Column="1"  />
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding ViewTotal}" Foreground="Black" />
+                                        <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding SelectedIndex, ElementName=listView}"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#013220" Background="#013220">
+                                            <materialDesign:PackIcon Kind="DeleteCircle" Width="24" Height="24" Foreground="White" />
+                                        </Button>
+                                        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="30,0,80,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20*"/>
+                                                <ColumnDefinition Width="15*"/>
+                                                <ColumnDefinition Width="20*"/>
+                                            </Grid.ColumnDefinitions>
 
-                                <Button Command="{Binding DataContext.MinusAmountCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding SelectedIndex, ElementName=listView}" IsEnabled="{Binding MinusEnabled}" Background="#013220" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="MaterialDesignFloatingActionMiniLightButton" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                    <materialDesign:PackIcon Kind="Minus" Height="20" Width="20" Background="#013220" Foreground="White"/>
-                                </Button>
-                                <TextBox IsEnabled="False" TextAlignment="Center" Grid.Column="1" BorderBrush="#013220" VerticalAlignment="Center" Height="37" Text="{Binding Amount}" Foreground="Black" FontSize="14" FontWeight="DemiBold" Margin="19.2,13,0,16.4"/>
-                                <Button Command="{Binding DataContext.PlusAmountCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding SelectedIndex, ElementName=listView}" IsEnabled="{Binding PlusEnabled}" Background="#013220" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Grid.Column="2" ToolTip="MaterialDesignFloatingActionMiniLightButton" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,16.4">
-                                    <materialDesign:PackIcon Kind="Plus" Height="20" Width="20" Foreground="White"/>
-                                </Button>
-                            </Grid>
-                            <Grid Grid.Row="1" Grid.Column="2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50*"/>
-                                    <RowDefinition Height="50*"/>
-                                </Grid.RowDefinitions>
+                                            <Button Command="{Binding DataContext.MinusAmountCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding SelectedIndex, ElementName=listView}" IsEnabled="{Binding MinusEnabled}" Background="#013220" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="MaterialDesignFloatingActionMiniLightButton" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <materialDesign:PackIcon Kind="Minus" Height="20" Width="20" Background="#013220" Foreground="White"/>
+                                            </Button>
+                                            <TextBox IsEnabled="False" TextAlignment="Center" Grid.Column="1" BorderBrush="#013220" VerticalAlignment="Center" Height="37" Text="{Binding Amount}" Foreground="Black" FontSize="14" FontWeight="DemiBold" Margin="19.2,13,0,16.4"/>
+                                            <Button Command="{Binding DataContext.PlusAmountCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding SelectedIndex, ElementName=listView}" IsEnabled="{Binding PlusEnabled}" Background="#013220" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Grid.Column="2" ToolTip="MaterialDesignFloatingActionMiniLightButton" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,16.4">
+                                                <materialDesign:PackIcon Kind="Plus" Height="20" Width="20" Foreground="White"/>
+                                            </Button>
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50*"/>
+                                                <RowDefinition Height="50*"/>
+                                            </Grid.RowDefinitions>
 
-                                <TextBlock Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="12" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding ViewPrice}" Foreground="#FF343434" />
-                                <TextBlock Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" FontSize="12" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding ViewSale}" Foreground="#FF343434" />
-                            </Grid>
-                        </Grid>
-                        </DataTemplate>
-                        </ListView.ItemTemplate>
+                                            <TextBlock Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="12" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding ViewPrice}" Foreground="#FF343434" />
+                                            <TextBlock Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" FontSize="12" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding ViewSale}" Foreground="#FF343434" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
                     </ScrollViewer>
                     <!--<TextBlock Text="Ваша корзина пуста" FontWeight="DemiBold" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Black" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
@@ -167,9 +167,9 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Text="{Binding CodeSale}" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Gray" FontSize="10" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,0" Height="27"/>
-                        
-        <TextBlock Text="{Binding StatusSale}" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Gray" FontSize="10" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" Height="20" Grid.Row="1" />
-        
+
+                        <TextBlock Text="{Binding StatusSale}" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="Gray" FontSize="10" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" Height="20" Grid.Row="1" />
+
                         <TextBlock Grid.Row="2" Text="{Binding Total}" Style="{StaticResource MaterialDesignBody1TextBlock}" FontWeight="DemiBold" Foreground="Black" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,0,0,0" Height="26"/>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -216,11 +216,11 @@
                     <DropShadowEffect ShadowDepth="0"/>
                 </Grid.Effect>
             </Grid>
-            
-        
-        <!--Инфо о пользователе-->
-        
-        
+
+
+            <!--Инфо о пользователе-->
+
+
             <Grid Grid.Column="0">
                 <Button Command="{Binding EndMakeOrder}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,24" Content="Назад" Foreground="White" BorderBrush="#013220" Background="#013220" Height="52" Width="130"/>
                 <Grid HorizontalAlignment="Left" Height="400" Margin="0,10,0,0" VerticalAlignment="Top" Width="346">
@@ -243,5 +243,51 @@
                 </Grid>
             </Grid>
         </Grid>
+        <!--Уведомление-->
+        <Grid Visibility="{Binding MessageVisibility}" Opacity="0.7" Background="#013220" HorizontalAlignment="Left" Height="620" Margin="0" VerticalAlignment="Top" Width="1300"/>
+        <Grid Visibility="{Binding MessageVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1" Grid.Column="1" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="240*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="20*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="20" Text="{Binding Message}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF160025"/>
+
+                <Grid Grid.Column="1" Grid.Row="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Command="{Binding Back}" Grid.Column="1" Content="OK" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#013220"/>
+                    <materialDesign:PackIcon Visibility="{Binding CheckVisibility}" ToolTip="Открыть PDF" Kind="FilePdfBox" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="68" Height="54" Cursor="Hand" Foreground="#FF160025" Margin="0,10,-0.2,9.6">
+                        <materialDesign:PackIcon.InputBindings>
+                            <MouseBinding Gesture="LeftClick" Command="{Binding PDF}"/>
+                        </materialDesign:PackIcon.InputBindings>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </Grid>
+        </Grid>
+
+
     </Grid>
 </UserControl>

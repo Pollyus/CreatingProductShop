@@ -28,11 +28,12 @@ namespace View.ViewModel
         private readonly IOrderService _orderService;
         private readonly IDialogService _dialogService;
         private readonly IProfileService _profileService;
+        private readonly IFileService _fileService;
 
         public delegate void DialogHandler();
         public event DialogHandler Notify;
 
-        public AuthViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IDialogService dialogService, IProfileService profileService)
+        public AuthViewModel(IDbCrud dbCrud, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IDialogService dialogService, IProfileService profileService, IFileService fileService)
         {
             _crud = dbCrud;
             _categoryService = categoryService;
@@ -40,6 +41,7 @@ namespace View.ViewModel
             _dialogService = dialogService;
             _profileService = profileService;
             _orderService = orderService;
+            _fileService = fileService;
 
             LoginColor = "#FF160025";
             UserLogin = "";
@@ -126,7 +128,7 @@ namespace View.ViewModel
             }
 
             int UserId = _profileService.GetUserId(UserLogin);
-            _dialogService.OpenCatalogWindow(_crud, _categoryService, _catalogService, _orderService, _dialogService, _profileService, UserId);
+            _dialogService.OpenCatalogWindow(_crud, _categoryService, _catalogService, _orderService, _dialogService, _profileService, UserId, _fileService);
             Notify?.Invoke();
         }
 

@@ -39,7 +39,7 @@ namespace DAL.Repository
                                SaleName = sale.Name,
                                Background = sale.Background,
                                Condition = sale.Condition, 
-                               Sale_Id = sale.Id,
+                               SaleId = sale.Id,
                                Buyer_Id = us.UserId,
                                Offer = sale.Offer,
                                Order_Id = us.OrderId,

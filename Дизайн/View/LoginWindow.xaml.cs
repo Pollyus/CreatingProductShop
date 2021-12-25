@@ -25,11 +25,11 @@ namespace Дизайн
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow(IDbCrud crudService, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IProfileService profileService)
+        public LoginWindow(IDbCrud crudService, ICategoryService categoryService, ICatalogService productCatalogService, IOrderService orderService, IProfileService profileService, IFileService fileService)
         {
             InitializeComponent();
 
-            AuthViewModel viewModel = new AuthViewModel(crudService, categoryService, productCatalogService, orderService, new DialogService(), profileService);
+            AuthViewModel viewModel = new AuthViewModel(crudService, categoryService, productCatalogService, orderService, new DialogService(), profileService, fileService);
 
             DataContext = viewModel;
             viewModel.Notify += CloseWindow;

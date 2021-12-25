@@ -22,22 +22,54 @@
             <ColumnDefinition Width="20*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <!--Имя-->
-        <Grid Grid.Row="1" Grid.Column="1" Margin="20">
-            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="20" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="#013220" TextAlignment="Center" FontSize="30" TextWrapping="Wrap"/>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"></RowDefinition>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="50*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <materialDesign:PackIcon Kind="Account" Grid.Row="0" Width="50" Height="50" Foreground="#013220" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="2" Margin="20"  Text="{Binding Name}" VerticalAlignment="Center"  HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="#013220" TextAlignment="Center" FontSize="30" TextWrapping="Wrap" Width="496" RenderTransformOrigin="0.5,0.5"/>
+            <TextBlock Width="auto" FontSize="20" Text="Имя пользователя: " Margin="0" Grid.Row="1"/>
             <Grid.Effect>
                 <DropShadowEffect ShadowDepth="0"/>
             </Grid.Effect>
         </Grid>
         <!--Email-->
         <Grid Grid.Row="2" Grid.Column="1" Margin="10">
-            <TextBlock Text="{Binding Email}" VerticalAlignment="Center" Margin="20" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"  Foreground="#013220" FontSize="30" TextWrapping="Wrap"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"></RowDefinition>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="50*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <materialDesign:PackIcon Kind="Email"  Width="50" Height="50" Foreground="#013220" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="1" Text="Адрес электронной почты: " FontSize="20" Margin="0,0,0,0.6" Height="35"/>
+            <TextBlock Grid.Row="2"  Margin="20" Text="{Binding Email}" VerticalAlignment="Center"  HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"  Foreground="#013220" FontSize="30" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Width="484">
+
+            </TextBlock>
+
+
+
             <Grid.Effect>
                 <DropShadowEffect ShadowDepth="0"/>
             </Grid.Effect>
         </Grid>
         <!--Адрес-->
         <Grid Grid.Row="3" Grid.Column="1" Margin="10">
-            <TextBlock Text="{Binding Address}" VerticalAlignment="Center" Margin="20" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"  Foreground="#013220" FontSize="30" TextWrapping="Wrap"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"></RowDefinition>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="50*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <materialDesign:PackIcon Kind="AddressMarker" Grid.Row="0" Width="50" Height="50" Foreground="#013220" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="1" Text="Адрес доставки: " FontSize="20" Margin="0,0,0,0.6" Height="35"/>
+            <TextBlock Grid.Row="2" Text="{Binding Address}" VerticalAlignment="Center" Margin="20" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"  Foreground="#013220" FontSize="30" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Width="489">
+
+            </TextBlock>
+
             <Grid.Effect>
                 <DropShadowEffect ShadowDepth="0"/>
             </Grid.Effect>

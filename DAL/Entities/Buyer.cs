@@ -12,7 +12,6 @@ namespace DAL.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Buyer()
         {
-            Busket = new HashSet<Busket>();
             Order = new HashSet<Order>();
             ShoppingCart = new HashSet<ShoppingCart>();
             User_Sale = new HashSet<User_Sale>();
@@ -27,7 +26,6 @@ namespace DAL.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Password { get; set; }
 
@@ -41,9 +39,6 @@ namespace DAL.Entities
 
         [StringLength(100)]
         public string Email { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Busket> Busket { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

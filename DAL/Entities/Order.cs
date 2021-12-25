@@ -12,7 +12,6 @@ namespace DAL.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            OrderLines = new HashSet<OrderLines>();
             User_Sale = new HashSet<User_Sale>();
         }
 
@@ -35,14 +34,11 @@ namespace DAL.Entities
 
         public int? StatusId { get; set; }
 
+        public decimal? Sale { get; set; }
+
         public virtual Buyer Buyer { get; set; }
 
         public virtual OrderStatus OrderStatus { get; set; }
-
-        public virtual TypeOfPayment TypeOfPayment { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderLines> OrderLines { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Sale> User_Sale { get; set; }

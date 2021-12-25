@@ -22,6 +22,8 @@ namespace DAL.Entities
 
         public decimal? Offer { get; set; }
 
+        public decimal? GiveAwayCondition { get; set; }
+
         public decimal? Condition { get; set; }
 
         [StringLength(1000)]

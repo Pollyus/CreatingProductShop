@@ -30,8 +30,9 @@ namespace Дизайн
             ICatalogService prodCatServ = kernel.Get<ICatalogService>();
             IOrderService ordServ = kernel.Get<IOrderService>();
             IProfileService profServ = kernel.Get<IProfileService>();
+            IFileService fileServ = kernel.Get<IFileService>();
 
-            LoginWindow loginWindow = new LoginWindow(crudServ, catServ, prodCatServ, ordServ, profServ);
+            LoginWindow loginWindow = new LoginWindow(crudServ, catServ, prodCatServ, ordServ, profServ, fileServ);
 
             loginWindow.Show();
 
