@@ -29,10 +29,7 @@ namespace BAL
         {
             return db.Products.GetList().Select(i => new ProductModel(i)).ToList();
         }
-        //public List<BatchOfProductModel> GetAllBatch()
-        //{
-        //    return db.Batchs.GetList().Select(i => new BatchOfProductModel(i)).ToList();
-        //}
+        
         public void DeleteCart(int id)
         {
             ShoppingCart cart = db.ShoppingCarts.GetItem(id);

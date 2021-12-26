@@ -18,6 +18,7 @@ using View.ViewModel;
 using BBL.Models;
 using GalaSoft.MvvmLight.Messaging;
 
+
 namespace Дизайн.ViewModel
 {
     public class CatalogViewModel : INotifyPropertyChanged
@@ -38,6 +39,7 @@ namespace Дизайн.ViewModel
             _dialogService = dialogService;
             _userId = userId;
 
+            string date = "12/31/2020";
             var tempTypes = _categoryService.GetTypeModels();
             Types = new ObservableCollection<CategoryTypeModel>();
             foreach (var i in tempTypes)
@@ -95,6 +97,8 @@ namespace Дизайн.ViewModel
             }
         }
 
+        
+        #endregion
         private void SelectedIndexChanged(object args)
         {
             
@@ -110,8 +114,8 @@ namespace Дизайн.ViewModel
                 Photo = Product[0].Photo;
                 Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
                 CanAddToCart = Product[0].Avalibility;
-                DateProduction = Product[0].DateProduction;
-                DateExpiration = Product[0].DateExpiration;
+                DateProduction = Product[0].DateProduction.ToString();
+                DateExpiration = Product[0].DateExpiration.ToString();
 
                 if (Product[0].Sale != null)
                 {
@@ -128,11 +132,9 @@ namespace Дизайн.ViewModel
                 }
             }
         }
-        #endregion
-
         private int productId; 
         
-        public DateTime? DateProduction
+        public string DateProduction
         {
             get
             {
@@ -141,12 +143,12 @@ namespace Дизайн.ViewModel
             set
             {
                 _DateProduction = value;
-                NotifyPropertyChanged("_DateProduction");
+                NotifyPropertyChanged("DateProduction");
             }
         }
-        private DateTime? _DateProduction;
+        private string _DateProduction;
 
-        public DateTime? DateExpiration
+        public string DateExpiration
         {
             get
             {
@@ -155,10 +157,10 @@ namespace Дизайн.ViewModel
             set
             {
                 _DateExpiration = value;
-                NotifyPropertyChanged("_DateExpiration");
+                NotifyPropertyChanged("DateExpiration");
             }
         }
-        private DateTime? _DateExpiration;
+        private string _DateExpiration;
 
         public string Description
         {
@@ -314,8 +316,8 @@ namespace Дизайн.ViewModel
                 Photo = Product[0].Photo;
                 Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
                 CanAddToCart = Product[0].Avalibility;
-                DateExpiration = Product[0].DateExpiration;
-                DateProduction = Product[0].DateProduction;
+                DateExpiration = Product[0].DateExpiration.ToString();
+                DateProduction = Product[0].DateProduction.ToString();
 
                 if (Product[0].Sale != null)
                 {
