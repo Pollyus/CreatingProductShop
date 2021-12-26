@@ -40,8 +40,8 @@ namespace BAL.Models
             Id = o.Id;
             Order_Status_Id = o.StatusId;
             Address = o.Address;
-            //Date = o.Date;
-            //Total = o.Sum;
+            Date = o.Date;
+            Total = o.Sum;
 
         }
     }

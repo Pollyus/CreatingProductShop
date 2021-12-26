@@ -72,7 +72,8 @@
 
                                             <Grid Grid.Row="0" Background="White" Margin="0,0,0,95" Grid.RowSpan="2">
                                                 <Image Source="{Binding Path=Photo}" Stretch="Uniform" HorizontalAlignment="Center"/>
-                                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Content="+"  BorderBrush="#ADDFAD" Background="#ADDFAD" Foreground="#013220" Margin="150,183,10,-20.6">
+                                              
+                                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddToCart}"  IsEnabled="{Binding CanAddToCart}" Content="+" FontSize="20" BorderBrush="#ADDFAD" Background="#ADDFAD" Foreground="#013220" Margin="150,183,10,-20.6">
 
                                     </Button>
                                             </Grid>

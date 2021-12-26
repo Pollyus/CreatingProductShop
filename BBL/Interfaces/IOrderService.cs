@@ -12,7 +12,7 @@ namespace BAL.Interfaces
     public interface IOrderService
     {
        
-        int MakeOrder(int userId, int couponId, decimal sum, ObservableCollection<CartModel> cart);
+        int MakeOrder(int userId, int couponId, decimal sum, ObservableCollection<CartModel> cart, string address);
 
         List<CartModel> GetShoppingCart(int customerId);
     }

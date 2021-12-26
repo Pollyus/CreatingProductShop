@@ -11,10 +11,10 @@
         d:DesignHeight="620" 
         d:DesignWidth="965">
     <Grid Background="White">
-       
-        <Grid Background ="AliceBlue">
+
+        <Grid Background ="AliceBlue" Margin="-10,0,9.8,0">
             <ScrollViewer  Grid.Column="0" HorizontalAlignment="Left" Width="945" Height="Auto" Margin="10,10,0,0" VerticalAlignment="Top" >
-                <ListView x:Name="listView"  ItemsSource="{Binding Sales}" HorizontalAlignment="Left" Height="590" VerticalAlignment="Top" Width="935">
+            <ListView x:Name="listView"  ItemsSource="{Binding Sales}" HorizontalAlignment="Left" Height="590" VerticalAlignment="Top" Width="935">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" MaxWidth="{Binding ElementName=listView, Path=ActualWidth}"/>
@@ -22,25 +22,35 @@
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="300">
+                            <StackPanel HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="300">
                         <StackPanel.Effect>
                             <DropShadowEffect ShadowDepth="0"/>
                         </StackPanel.Effect>
-                        <Grid HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="300">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="250"></RowDefinition>
-                                <RowDefinition Height="50"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Background="White" Grid.RowSpan="2">
-                                <TextBlock Foreground="Black" FontSize="14" FontWeight="DemiBold" Text="{Binding Path=ViewText}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" Margin="5,0,10,5"  VerticalAlignment="Center" HorizontalAlignment="Center" />
-                            </Grid>
-                            <Grid Grid.Row="1" Background="{Binding Path=Background}" >
-                                <TextBlock Foreground="White" FontSize="17" FontWeight="DemiBold" Text="{Binding Path=SaleName}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" Margin="5,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </Grid>
-                            <Image Opacity="0.05" Grid.Row="0" Source="/Assets/Sale.png" Stretch="Uniform" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10"/>
-                        </Grid>
+            <Grid Margin="10" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="300">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200*"></RowDefinition>
+                    <RowDefinition Height="100*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="White" Grid.RowSpan="2">
 
+                    <StackPanel   x:Name="MyImagePanel" HorizontalAlignment="Left" Height="200" Margin="0,10,0,0" VerticalAlignment="Top" Width="300">
+                        <Image  Opacity="0.5" Source="{Binding Background}"
+                                   Height="200" Width="300"/>
                     </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Foreground="Black" FontSize="14" FontWeight="DemiBold" Text="{Binding Path=ViewText}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="280" Height="80" />
+                </Grid>
+                <Grid Grid.Row="2" Background="#013220" >
+                    <TextBlock Foreground="White" FontSize="17" FontWeight="DemiBold" Text="{Binding Path=SaleName}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" Margin="4,10,5,9.6" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Width="291">
+
+                    </TextBlock>
+                </Grid>
+                <!--<Image Opacity="0.25" Grid.Row="0" Source="/Assets/apple.png" Stretch="Uniform" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10"/>-->
+            </Grid>
+
+            </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -49,6 +59,6 @@
 
         </Grid>
 
-        
+
     </Grid>
 </UserControl>

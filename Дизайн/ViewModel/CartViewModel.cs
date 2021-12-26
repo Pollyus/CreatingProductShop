@@ -125,6 +125,7 @@ namespace Дизайн.ViewModel
                 i.ViewTotal = $"Итого: {i.FullPrice - i.FullSale:0.#} руб.";
                 Cart.Add(i);
                 total += i.FullPrice - i.FullSale;
+                
             }
             if (Cart.Count != 0)
             {
@@ -148,10 +149,13 @@ namespace Дизайн.ViewModel
                 Sale.Add(i);
             }
 
-            //StatusSale = $"Скидка за статус: {total * 0.05m:0.##} руб.";
-            Total = $"Итого: {total * 0.95m:0.##} руб.";
+            
+            Total = $"Итого: {total :0.##} руб.";
             CodeSale = $"Применив скидку вы сэкономили: 0 руб.";
             SelectedSale = 0;
+
+            //OrderModel orderAddress = new OrderModel();
+            //orderAddress.Address = UserAddress;
         }
 
 
@@ -227,10 +231,10 @@ namespace Дизайн.ViewModel
         private ICommand _endMakeOrder;
 
         private void CloseMakeOrder(object args)
-        { 
+        {
             
             OrderVisibility = "Hidden";
-            
+           
         }
         public ICommand MakeOrder
         {
@@ -257,27 +261,23 @@ namespace Дизайн.ViewModel
             }
         }
         private ICommand _endOrder;
+
+        
         private void MakeOrderCheck(object args)
         {
             try
             {
-                if (_orderService.MakeOrder(_userId, Sale[SelectedSale].Id, (decimal)total - (decimal)Sale[SelectedSale].Offer, Cart) != 0)
+                if (_orderService.MakeOrder(_userId, Sale[SelectedSale].Id,  (decimal)total - (decimal)Sale[SelectedSale].Offer, Cart, UserAddress) != 0)
                 {
                    
+                     
                     Message = "Заказ выполнен";
                     MessageVisibility = "Visible";
                     CheckVisibility = "Visible";
                     OrderCreated?.Invoke(0);
-                    //_crud.CreateBuyer(new BuyerModel
-                    //{
-                    //    Id = this._userId,
-                        
-                    //    Address = this.UserAddress
-
-                    //}); ;
-                    //UserAddress = "";
+                    
                 }
-            }
+        }
             catch (Exception ex)
             {
                 Message = "Ошибка";
@@ -287,7 +287,7 @@ namespace Дизайн.ViewModel
             finally
             {
                 UpdateOrderPage();
-            }
+}
 
         }
 
@@ -333,10 +333,11 @@ namespace Дизайн.ViewModel
         {
             SelectedSale = (int)args;
             CodeSale = $"Скидка составила: {Sale[SelectedSale].Offer:0.#} руб.";
-            Total = $"Итого: {total * 0.95m - Sale[SelectedSale].Offer:0.##} руб.";
+            Total = $"Итого: {total * 1m - Sale[SelectedSale].Offer:0.##} руб.";
         }
 
-       
+
+        
         public ObservableCollection<SaleModel> Sale
         {
             get
@@ -405,6 +406,34 @@ namespace Дизайн.ViewModel
             {
                 _UserAddress = value;
                 NotifyPropertyChanged("UserAddress");
+            }
+        }
+
+        private string _UserLogin;
+        public string UsrerLogin
+        {
+            get
+            {
+                return _UserLogin;
+            }
+            set
+            {
+                _UserLogin = value;
+                NotifyPropertyChanged("UserLogin");
+            }
+        }
+
+        private string _UserPassword;
+        public string UsrerPassword
+        {
+            get
+            {
+                return _UserPassword;
+            }
+            set
+            {
+                _UserPassword = value;
+                NotifyPropertyChanged("UserPassword");
             }
         }
         #region Сообщение

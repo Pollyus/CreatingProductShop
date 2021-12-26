@@ -45,9 +45,9 @@
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,10,0" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=ViewSum}" Foreground="Black" />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Margin="0,0,10,0" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=ViewDate}" Foreground="Black" />
                 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Margin="10,0,0,0" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=OrderStatus}" Foreground="Black" />
-                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Margin="10,0,0,0" FontSize="14" FontWeight="DemiBold"  Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding Path=PickPoint}" Foreground="Black" />
+               
 
-                <Expander Grid.Row="2" HorizontalAlignment="Stretch" Header="Товары в заказе: " Foreground="White" Background="#A80051" FontSize="14" FontWeight="DemiBold">
+                <!--<Expander Grid.Row="2" HorizontalAlignment="Stretch" Header="Товары в заказе: " Foreground="White" Background="#013220" FontSize="14" FontWeight="DemiBold">
                     <ScrollViewer Grid.Row="1" Background="#FFF3F3F3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0" >
                         <ListView  materialDesign:ListBoxItemAssist.ShowSelection="False"  x:Name="ProdList" ItemsSource="{Binding Path=OrderLines}" ItemTemplate="{StaticResource InternalTemplate}" HorizontalContentAlignment="Center">
                             <ListView.ItemContainerStyle>
@@ -70,8 +70,8 @@
                             </ListView.ItemContainerStyle>
                         </ListView>
                     </ScrollViewer>
-                </Expander>
-                <Rectangle Grid.Row="2" HorizontalAlignment="Stretch" Fill="LightGray" Height="2" VerticalAlignment="Top" />
+                </Expander>-->
+                <!--<Rectangle Grid.Row="2" HorizontalAlignment="Stretch" Fill="LightGray" Height="2" VerticalAlignment="Top" />-->
 
                 <Grid.Effect>
                     <DropShadowEffect ShadowDepth="0"/>

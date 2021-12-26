@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
 
             <materialDesign:PackIcon Kind="Account" Grid.Row="0" Width="50" Height="50" Foreground="#013220" HorizontalAlignment="Left"/>
-            <TextBlock Grid.Row="2" Margin="20"  Text="{Binding Name}" VerticalAlignment="Center"  HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="#013220" TextAlignment="Center" FontSize="30" TextWrapping="Wrap" Width="496" RenderTransformOrigin="0.5,0.5"/>
+            <TextBlock Grid.Row="2" Margin="10,9.6,10,10.4"  Text="{Binding Name}" VerticalAlignment="Center"  HorizontalAlignment="Left"  Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="#013220" TextAlignment="Center" FontSize="20" Width="496" Height="48" />
             <TextBlock Width="auto" FontSize="20" Text="Имя пользователя: " Margin="0" Grid.Row="1"/>
             <Grid.Effect>
                 <DropShadowEffect ShadowDepth="0"/>
@@ -46,7 +46,7 @@
 
             <materialDesign:PackIcon Kind="Email"  Width="50" Height="50" Foreground="#013220" HorizontalAlignment="Left"/>
             <TextBlock Grid.Row="1" Text="Адрес электронной почты: " FontSize="20" Margin="0,0,0,0.6" Height="35"/>
-            <TextBlock Grid.Row="2"  Margin="20" Text="{Binding Email}" VerticalAlignment="Center"  HorizontalAlignment="Center" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"  Foreground="#013220" FontSize="30" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Width="484">
+            <TextBlock Grid.Row="2"  Margin="10,9.6,16,10.4" Text="{Binding Email}" VerticalAlignment="Center"  HorizontalAlignment="Left" Style="{StaticResource MaterialDesignBody1TextBlock}" TextAlignment="Center"  Foreground="#013220" FontSize="20"  Width="490" Height="48">
 
             </TextBlock>
 
@@ -57,6 +57,7 @@
             </Grid.Effect>
         </Grid>
         <!--Адрес-->
+        <!--
         <Grid Grid.Row="3" Grid.Column="1" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40*"></RowDefinition>
@@ -73,7 +74,7 @@
             <Grid.Effect>
                 <DropShadowEffect ShadowDepth="0"/>
             </Grid.Effect>
-        </Grid>
+        </Grid>-->
         <Grid Grid.Column="0" Grid.RowSpan="5" Background="#013220" ></Grid>
         <Grid Grid.Column="2" Grid.RowSpan="5" Background="#013220" ></Grid>
     </Grid>

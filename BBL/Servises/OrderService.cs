@@ -26,17 +26,18 @@ namespace BAL.Servises
         }
         
 
-        public int MakeOrder(int userId, int couponId,  decimal sum, ObservableCollection<CartModel> cart)
+        public int MakeOrder(int userId, int couponId,  decimal sum, ObservableCollection<CartModel> cart, string address)
         {
             try
             {
-               
+                
                 DAL.Entities.Order order = new Order();
                 order.UserId = userId;
                 order.Date = DateTime.Now.Date;
                 order.StatusId = 1; //Собирается
                 order.Sum = sum;
                 //order.Sale = sale;
+                order.Address = address;
                 dataBase.Orders.Create(order);
 
                 if (dataBase.Save() <= 0)

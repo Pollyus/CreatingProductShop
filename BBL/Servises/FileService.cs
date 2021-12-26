@@ -53,23 +53,26 @@ namespace BBL.Servises
                 Document document = new Document(PageSize.A4, 25, 25, 30, 30);
                 PdfWriter writer = PdfWriter.GetInstance(document, fs);
 
-                BaseFont baseFont = BaseFont.CreateFont("arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+                BaseFont baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 Font font1 = new Font(baseFont, 14, Font.BOLD);
                 Font font = new Font(baseFont, 12);
 
+               
                 document.Open();
 
                 Paragraph header = new Paragraph("Доставка продуктов", font1);
                 header.Alignment = Element.ALIGN_CENTER;
-                Paragraph separator = new Paragraph("***********************************************************************************", font1);
+                Paragraph separator = new Paragraph("--------------------------------------------------------------------------------", font1);
                 separator.Alignment = Element.ALIGN_CENTER;
                 Paragraph date = new Paragraph($"Дата оформления заказа: {order.Date}", font);
-                Paragraph name = new Paragraph($"Заказчик: {buyer.Name}", font);
-               
+                Paragraph name = new Paragraph($"Ваше имя: {buyer.Name}", font);
+                Paragraph sum = new Paragraph($"Сумма заказа составила: {order.Sum} руб.", font);
 
 
 
-                document.Add(header);
+
+            document.Add(header);
                 document.Add(separator);
                 document.Add(new Paragraph("\n"));
                 document.Add(date);
@@ -79,11 +82,13 @@ namespace BBL.Servises
 
                 foreach (var i in lines)
                 {
-                    document.Add(new Paragraph($"{i.Name}: {i.Amount} шт.", font));
+                    document.Add(new Paragraph($"{i.Name}: {i.Amount} шт. {i.Price.ToString() } руб. ", font));
+                
                     document.Add(new Paragraph("\n"));
                 }
 
                 document.Add(new Paragraph("\n"));
+                document.Add(sum);
                 document.Add(separator);
 
 
