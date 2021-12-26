@@ -12,7 +12,6 @@ namespace BLL.Models
             Id = status.Id;
             Name = status.Name;
         }
-
         public int Id { get; set; }
 
         public string Name { get; set; }

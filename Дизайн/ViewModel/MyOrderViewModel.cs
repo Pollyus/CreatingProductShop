@@ -14,7 +14,7 @@ using BAL.Interfaces;
 using BBL.Interfaces;
 using View.Util;
 
-namespace Mustorg.ViewModel
+namespace View.ViewModel
 {
     public class MyOrdersViewModel : INotifyPropertyChanged
     {

@@ -123,14 +123,30 @@ namespace BAL
         //}
         public ProductModel GetProduct(int Id)
         {
-            return new ProductModel(db.Products.GetItem(Id));
+            var result = db.Products.GetItem(Id);
+            ProductModel prod = new ProductModel();
+            prod.Amount = result.Amount;
+            return prod;
         }
 
 
 
-        public void CreateProduct(ProductModel p)
+        public void CreateProduct(ProductModel product)
         {
-            db.Products.Create(new Product() {  Cost = p.Cost, CategoryId = 1, Name = p.Name });
+            db.Products.Create(new Product()
+            {
+                Name = product.Name,
+                Amount = product.Amount,
+                Cost = product.Cost,
+                Sale = product.Sale,
+                Description = product.Description,
+                Avalibility = product.Avalibility,
+                Id = product.Id,
+                DateExpiration = product.DateExpiration,
+                DateProduction = product.DateProduction,
+                BrandId = product.BrandId,
+                CategoryId = product.CategoryId,
+            });
             Save();
 
         }
@@ -146,6 +162,8 @@ namespace BAL
             prod.Avalibility = product.Avalibility;
             prod.BrandId = product.BrandId;
             prod.CategoryId = product.CategoryId;
+            prod.DateExpiration = product.DateExpiration;
+            prod.DateProduction = product.DateProduction;
             Save();
         }
 

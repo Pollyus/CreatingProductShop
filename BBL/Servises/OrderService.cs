@@ -53,7 +53,7 @@ namespace BAL.Servises
                     line.Amount = i.Amount;
                     line.Price = (decimal)i.FullPrice - (decimal)i.FullSale;
                     Product prod = dataBase.Products.GetItem(i.ProductId);
-                    //prod.Amount -= i.Amount;
+                    prod.Amount -= i.Amount;
                     if (prod.Amount == 0) prod.Avalibility = false;
                     dataBase.Products.Update(prod);
                     dataBase.OrderLines.Create(line);

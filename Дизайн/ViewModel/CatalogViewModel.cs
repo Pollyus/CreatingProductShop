@@ -14,7 +14,7 @@ using BBL.Interfaces;
 using Дизайн.ViewModel;
 using View;
 using Дизайн;
-using Mustorg.ViewModel;
+using View.ViewModel;
 using BBL.Models;
 using GalaSoft.MvvmLight.Messaging;
 
@@ -110,8 +110,8 @@ namespace Дизайн.ViewModel
                 Photo = Product[0].Photo;
                 Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
                 CanAddToCart = Product[0].Avalibility;
-                DateProduction = $"Дата производства \n: {Product[0].DateProduction.Value}";
-                DateExpiration = $"Годен до \n: {Product[0].DateExpiration.Value}";
+                DateProduction = Product[0].DateProduction;
+                DateExpiration = Product[0].DateExpiration;
 
                 if (Product[0].Sale != null)
                 {
@@ -132,7 +132,7 @@ namespace Дизайн.ViewModel
 
         private int productId; 
         
-        public string DateProduction
+        public DateTime? DateProduction
         {
             get
             {
@@ -144,9 +144,9 @@ namespace Дизайн.ViewModel
                 NotifyPropertyChanged("_DateProduction");
             }
         }
-        private string _DateProduction;
+        private DateTime? _DateProduction;
 
-        public string DateExpiration
+        public DateTime? DateExpiration
         {
             get
             {
@@ -158,7 +158,7 @@ namespace Дизайн.ViewModel
                 NotifyPropertyChanged("_DateExpiration");
             }
         }
-        private string _DateExpiration;
+        private DateTime? _DateExpiration;
 
         public string Description
         {
@@ -309,11 +309,13 @@ namespace Дизайн.ViewModel
                 this.productId = productId;
 
                 var Product = _crud.GetAllProducts().Where(i => i.Id == this.productId).ToList();
-                Description = "Характеристики: \n" + Product[0].Description;
+                Description = "Описание: \n" + Product[0].Description;
                 Name = Product[0].Name;
                 Photo = Product[0].Photo;
                 Price = $"Стоимость: {Product[0].Cost:0.#} руб.";
                 CanAddToCart = Product[0].Avalibility;
+                DateExpiration = Product[0].DateExpiration;
+                DateProduction = Product[0].DateProduction;
 
                 if (Product[0].Sale != null)
                 {

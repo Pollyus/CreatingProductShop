@@ -31,7 +31,7 @@ namespace DAL.Repository
 
         public void Create(Product product)
         {
-            product.Id = 10;
+           
             db.Product.Add(product);
 
         }

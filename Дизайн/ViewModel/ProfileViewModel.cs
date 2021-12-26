@@ -15,7 +15,7 @@ using System.Windows.Input;
 using View.ViewModel;
 using Дизайн.ViewModel;
 
-namespace Mustorg.ViewModel
+namespace View.ViewModel
 {
     public class ProfileViewModel : INotifyPropertyChanged
     {

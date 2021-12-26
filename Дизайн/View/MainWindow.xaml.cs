@@ -16,7 +16,7 @@ using Дизайн.ViewModel;
 using BBL.Interfaces;
 using BAL.Interfaces;
 using Дизайн.Util;
-using Mustorg.ViewModel;
+using View.ViewModel;
 
 namespace Дизайн.View
 {

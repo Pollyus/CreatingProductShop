@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Дизайн.ViewModel;
 
-namespace Mustorg.ViewModel
+namespace View.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {

@@ -7,7 +7,7 @@ using BAL.Interfaces;
 using System.ComponentModel;
 using BBL.Interfaces;
 
-namespace Mustorg.ViewModel
+namespace View.ViewModel
 {
     public class ProductWindowViewModel : INotifyPropertyChanged
     {
@@ -27,6 +27,8 @@ namespace Mustorg.ViewModel
             Photo = Product[0].Photo;
             Price = Product[0].Cost;
             Sale = Product[0].Sale;
+            DateProduction = Product[0].DateProduction;
+            DateExpiration = Product[0].DateExpiration;
 
             if (Product[0].Avalibility == true)
             {
@@ -45,7 +47,8 @@ namespace Mustorg.ViewModel
         public decimal? Price { get; set; }
         public decimal? Sale { get; set; }
         public string Availability { get; set; }
-
+        public DateTime? DateProduction { get; set; }
+        public DateTime? DateExpiration { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged(string propertyName)

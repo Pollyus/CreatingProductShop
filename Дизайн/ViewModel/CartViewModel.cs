@@ -154,8 +154,7 @@ namespace Дизайн.ViewModel
             CodeSale = $"Применив скидку вы сэкономили: 0 руб.";
             SelectedSale = 0;
 
-            //OrderModel orderAddress = new OrderModel();
-            //orderAddress.Address = UserAddress;
+            
         }
 
 
@@ -277,7 +276,7 @@ namespace Дизайн.ViewModel
                     OrderCreated?.Invoke(0);
                     
                 }
-        }
+            }
             catch (Exception ex)
             {
                 Message = "Ошибка";
@@ -286,8 +285,8 @@ namespace Дизайн.ViewModel
             }
             finally
             {
-                UpdateOrderPage();
-}
+                //UpdateOrderPage();
+            }
 
         }
 
